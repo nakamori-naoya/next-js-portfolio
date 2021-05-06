@@ -80,20 +80,19 @@ const PortfolioDetail = ({ id ,staticPortfolio }) => {
     }
     get()
    },[])
-   console.log("avgEval",avgEval)
 
    const avg = (array) =>{
       return array.reduce((prev,current)=>prev + current,0) / array.length;
   }
 
-   const evaluate = async() =>{
+   const evaluate = useCallback(async() =>{
     const obj1 = {portfolio_id: 1 ,user_id: 1}  //ここはstateやpropsから取得するので、このあと変更！！
     const obj2 = {skill: skill, creativity: creativity, usability: usability, sociality: sociality, business_oriented: businessOriented }
     const array = Object.values(obj2)  //objectのvalue部分のみ取得
     const args = {...obj1, ...obj2, comprehensive_evaluation: avg(array)}
     const res = await createEval(args)
     setAvgEval(res)
-  }
+  }) 
   
 
 
