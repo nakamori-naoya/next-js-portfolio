@@ -22,7 +22,7 @@ const Authen = () => {
     } else {
       try {
        await register(email, password)
-       await login(email, password)
+       const status = await login(email, password)
        if(status == 201){
         router.push("/portfolio-cards");
        }
@@ -34,7 +34,6 @@ const Authen = () => {
     setMyProfile(myPro)
     setEditedMyProfile(myPro)
   };
-
   return (
     <div className="max-w-md w-full space-y-8">
       <div>

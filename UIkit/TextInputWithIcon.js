@@ -5,7 +5,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
 
-export default function TextInputWithIcon(props) {
+export default React.memo(function TextInputWithIcon(props) {
 
   return (
         <Grid container spacing={1} alignItems="flex-end" className="pb-3">
@@ -26,4 +26,4 @@ export default function TextInputWithIcon(props) {
         </Grid>
 
   );
-}
+})

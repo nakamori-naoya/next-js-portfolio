@@ -8,17 +8,6 @@ import SimpleNavBar from '../../UIkit/SimpleNavBar';
 
 export default function Portfolio({ id ,staticPortfolio }) {
     const router = useRouter();
-    // const { data: task, mutate } = useSWR(
-    //   `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/detail-task/${id}`,
-    //   fetcher,
-    //   {
-    //     initialData: staticPortfolio,
-    //   }
-    // );
-    // useEffect(() => {
-    //   mutate();
-    // }, []);
-  
     if (router.isFallback) {
       return <div>Loading...</div>;
     }

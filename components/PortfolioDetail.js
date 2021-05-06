@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import { makeStyles } from '@material-ui/styles';
 import {Grid, IconButton} from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import ControlledAccordions from '../UIkit/ControlledAccordion';
@@ -13,21 +12,17 @@ import Chats from './Chats';
 import SimpleDarkButton from '../UIkit/SimpleDarkButton';
 import { createEval } from '../lib/portfolioEval';
 import { getPortfolioAvgEval } from '../lib/PortfolioAvgEval';
+import { StateContext } from '../ApiContext/StateContext';
+import { useContext } from 'react';
 
 
 
-const useStyles = makeStyles(() => ({
-  icon: {
-    height: 64,
-    width: 64,
-  },
-}))
 
 
 
 //portfolio_idをpropsとして受け取り、子コンポーネントにもpropsとして渡す
-const PortfolioDetail = ({ id ,staticPortfolio }) => {
-  const classes = useStyles()
+const PortfolioDetail = React.memo(({ id, staticPortfolio }) => {
+  const {myProfile} = useContext(StateContext);
   const [avgEval, setAvgEval] = useState({
     portfolio_id: null,
     business_oriented: null,
@@ -67,7 +62,7 @@ const PortfolioDetail = ({ id ,staticPortfolio }) => {
 
   useEffect(()=>{
     const get = async() =>{
-      const res = await getPortfolioAvgEval(staticPortfolio.id)
+      const res = await getPortfolioAvgEval(id)
       res.data ? setAvgEval(res.data) : setAvgEval({
         portfolio_id: null,
         business_oriented: null,
@@ -86,17 +81,14 @@ const PortfolioDetail = ({ id ,staticPortfolio }) => {
   }
 
    const evaluate = useCallback(async() =>{
-    const obj1 = {portfolio_id: 1 ,user_id: 1}  //ここはstateやpropsから取得するので、このあと変更！！
+    const obj1 = {portfolio_id: id ,user_id: myProfile.id}  //ここはstateやpropsから取得するので、このあと変更！！
     const obj2 = {skill: skill, creativity: creativity, usability: usability, sociality: sociality, business_oriented: businessOriented }
     const array = Object.values(obj2)  //objectのvalue部分のみ取得
     const args = {...obj1, ...obj2, comprehensive_evaluation: avg(array)}
     const res = await createEval(args)
     setAvgEval(res)
   }) 
-  
 
-
-   
 
  return (
    <>
@@ -178,11 +170,11 @@ const PortfolioDetail = ({ id ,staticPortfolio }) => {
         <SelectButton
         label={"Skill"} value={skill} onChange={selectSkill} 
         datas={[1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0]} description={"技術力を評価して下さい　　　"}   />
-      <Chats />
+      <Chats id={id} />
      </div>
     </>  
   </>
  )
-};
+});
 
 export default PortfolioDetail;

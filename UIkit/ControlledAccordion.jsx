@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function ControlledAccordions(props) {
+export default React.memo(function ControlledAccordions(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -82,4 +82,4 @@ export default function ControlledAccordions(props) {
       </Accordion>
     </div>
   );
-}
+})

@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const SelectButton = (props) => {
+export const SelectButton = React.memo((props) => {
   const classes = useStyles();
   return (
     <div>
@@ -39,4 +39,4 @@ export const SelectButton = (props) => {
       </FormControl>
     </div>
   )
-}
+})

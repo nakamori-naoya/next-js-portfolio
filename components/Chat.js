@@ -2,11 +2,14 @@ import React from 'react';
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
+import { StateContext } from '../ApiContext/StateContext';
+import { useContext } from 'react';
 
 
 
 const Chat = (props) => {
-    const isLoginUser = (props.user_id === 1);  //条件分岐させる。
+    const {myProfile} = useContext(StateContext);
+    const isLoginUser = (props.userId === myProfile.id);  //条件分岐させる。
     const classes = isLoginUser ? "flex flex-row-reverse justify-end ": "flex flex-row justify-start" ;
 
 

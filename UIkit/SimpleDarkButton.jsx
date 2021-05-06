@@ -13,7 +13,7 @@ const useStyles = makeStyles ({
   }
 })
 
-const SimpleDarkButton = (props) => {
+const SimpleDarkButton = React.memo((props) => {
      const classes = useStyles();
   return (
   <Button className={classes.button} 
@@ -24,5 +24,5 @@ const SimpleDarkButton = (props) => {
       {props.label} 
   </Button>
   )
-}
+})
 export default SimpleDarkButton;

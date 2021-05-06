@@ -20,7 +20,7 @@ const useStyles = makeStyles(() =>
     }),
 );
 
-const Chats = () => {
+const Chats = React.memo(({id}) => {
     const classes = useStyles();
     const [chat, setChat] = useState("")
     const [chats, setChats] = useState([])
@@ -28,16 +28,15 @@ const Chats = () => {
 
     useEffect (() => {
         const get = async () =>{
-            const res = await getChats()
+            const res = await getChats(id)
             setChats(res.chats)
-            setUsers(res.user)
+            setUsers(res.user)  //chatに紐づくそれぞれのuserを取得 
         }
         get()
       }, [])
 
-
     const create = async() =>{
-        const args = {portfolio_id: 1, text: chat, user_id: 1}
+        const args = {portfolio_id: id, text: chat, user_id: 1}
         const res = await createChat(args)
         setChats([...chats, res.data])  
         console.log("createのres",res.data.text)
@@ -45,7 +44,6 @@ const Chats = () => {
 
       const  InputChat  = useCallback((event) => {
         setChat(event.target.value)
-        console.log("chat",chat)
       }, [setChat]);
 
     return (
@@ -53,7 +51,7 @@ const Chats = () => {
           <div className="bg-fixed border-gray-500 border-solid border-2 " >
             <List className={classes.chats} >
                 {chats.map((chat, index) => {
-                  return <Chat text={chat.text} key={index}  user_id={chat.user_id} user={users}/>
+                  return <Chat text={chat.text} key={index}  userId={chat.user_id}  user={users}/>
                 })}
             </List>
             <Divider />
@@ -76,5 +74,5 @@ const Chats = () => {
            </div>
         </section>
     );
-};
+});
 export default Chats;
