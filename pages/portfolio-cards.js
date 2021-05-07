@@ -2,6 +2,7 @@ import Cookie from "universal-cookie";
 import { getPortfolios } from '../lib/portfolio';
 import PortfolioCards from "../components/PortfolioCards";
 import SimpleNavBar from '../UIkit/SimpleNavBar';
+import StateContextProvider from "../ApiContext/StateContext";
 
 const cookie = new Cookie();
 

@@ -22,7 +22,7 @@ import { useContext } from 'react';
 
 //portfolio_idをpropsとして受け取り、子コンポーネントにもpropsとして渡す
 const PortfolioDetail = React.memo(({ id, staticPortfolio }) => {
-  const {myProfile} = useContext(StateContext);
+  const {myProfile,setMyProfile} = useContext(StateContext);
   const [avgEval, setAvgEval] = useState({
     portfolio_id: null,
     business_oriented: null,

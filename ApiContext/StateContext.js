@@ -11,6 +11,15 @@ export default function StateContextProvider (props)  {
   const [editedMyProfile, setEditedMyProfile] = useState({id: "", nickName: "", image: ""});
   const [cover, setCover] = useState();
 
+  useEffect(() => {
+    const getUser = async () => {
+      const res = await getMyProfile()
+      console.log("statecontextのres",res)
+      setMyProfile(res)
+    }
+    getUser()
+}, [token]);
+
   return (
     <StateContext.Provider
       value={{

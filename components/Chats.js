@@ -9,6 +9,8 @@ import { Divider } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { createChat, getChats } from '../lib/chats';
 import { useCallback } from 'react';
+import { useContext } from 'react';
+import { StateContext } from '../ApiContext/StateContext';
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -21,6 +23,8 @@ const useStyles = makeStyles(() =>
 );
 
 const Chats = React.memo(({id}) => {
+  const {myProfile, setMyProfile} = useContext(StateContext);
+  console.log(myProfile)
     const classes = useStyles();
     const [chat, setChat] = useState("")
     const [chats, setChats] = useState([])
@@ -36,10 +40,13 @@ const Chats = React.memo(({id}) => {
       }, [])
 
     const create = async() =>{
-        const args = {portfolio_id: id, text: chat, user_id: 1}
+        const args = {portfolio_id: id, text: chat, user_id: myProfile.id}
         const res = await createChat(args)
-        setChats([...chats, res.data])  
+        setChats([...chats, res.data]) 
+        setUsers([...users, res.user]) 
         console.log("createのres",res.data.text)
+        console.log(chats)
+        console.log(users)
       }
 
       const  InputChat  = useCallback((event) => {
@@ -50,8 +57,8 @@ const Chats = React.memo(({id}) => {
         <section className="relative h-3/12 w-4/12">
           <div className="bg-fixed border-gray-500 border-solid border-2 " >
             <List className={classes.chats} >
-                {chats.map((chat, index) => {
-                  return <Chat text={chat.text} key={index}  userId={chat.user_id}  user={users}/>
+                {chats.map(chat => {
+                  return <Chat text={chat.text} key={chat.id}  user_id={chat.user_id}  user={users}/>
                 })}
             </List>
             <Divider />

@@ -2,20 +2,22 @@ import { getPortfolio, getPortfolios} from "../../lib/portfolio";
 import PortfolioDetail from '../../components/PortfolioDetail';
 import { useRouter } from 'next/router';
 import SimpleNavBar from '../../UIkit/SimpleNavBar';
+import StateContextProvider from "../../ApiContext/StateContext";
 
 
 
 
 export default function Portfolio({ id ,staticPortfolio }) {
+  console.log("id",id, staticPortfolio)
     const router = useRouter();
     if (router.isFallback) {
       return <div>Loading...</div>;
     }
     return (
-        <>
+      <StateContextProvider>
           <SimpleNavBar/>
           <PortfolioDetail staticPortfolio={staticPortfolio} id={id}/>
-        </>
+      </StateContextProvider>
     );
   }
 
