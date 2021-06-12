@@ -1,10 +1,7 @@
-import Cookie from "universal-cookie";
 import { getPortfolios } from '../lib/portfolio';
-import PortfolioCards from "../components/PortfolioCards";
-import SimpleNavBar from '../UIkit/SimpleNavBar';
-import StateContextProvider from "../ApiContext/StateContext";
+import SimpleNavBar from '../components/NavBar/SimpleNavBar';
+import PortfolioList from '../components/PortfolioList/PortfolioList';
 
-const cookie = new Cookie();
 
 export async function getStaticProps() {
   const staticfilteredPortfolios = await getPortfolios(); 
@@ -17,8 +14,8 @@ export async function getStaticProps() {
 export default function PortfolioIndex({staticfilteredPortfolios}) {
   return(
     <>
-      <SimpleNavBar/>
-      <PortfolioCards staticfilteredPortfolios={staticfilteredPortfolios}/>
+      <SimpleNavBar />
+      <PortfolioList staticfilteredPortfolios={staticfilteredPortfolios}/>
     </>
   )
 }

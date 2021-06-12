@@ -2,11 +2,14 @@ import React,{useState, useCallback} from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ButtonMenu from "./ButtonMenu";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import FormDialog from '../Forms/FormDialog';
+import SearchIcon from '@material-ui/icons/Search';
+import HomeIcon from '@material-ui/icons/Home';
+import SearchBar from './SearchBar';
+import CustomizedSelects from './CustomizedSelect';
 
 
 export default function SimpleNavBar() {
@@ -18,18 +21,19 @@ export default function SimpleNavBar() {
   const handleClose = useCallback(() => {
     setOpen(false)
   },[setOpen]);
-  
   return (
-    <div className="bg-gray-800">
-      <AppBar position="static" className="bg-gray-800">
-       <Toolbar className="bg-gray-800">
-          <ButtonMenu
-            menuTitle="Blog"
-            position="right"
-            menuItems="配列入れてmapで回す"
-          />
-          <ButtonMenu className="font-serif" menuTitle="App" position="left" />
+    <div>
+      <AppBar position="static" >
+        <Toolbar className="bg-gray-800">
+        <IconButton >
+          <SearchIcon fontSize="large" className="text-white"/>
+        </IconButton>
+        <IconButton >
+          <HomeIcon fontSize="large" className="text-white"/>
+        </IconButton>
           <FormDialog  open={open} handleOpen={handleOpen} handleClose={handleClose}/>
+          <CustomizedSelects/>
+          <SearchBar />
           <div className="ml-auto">
             <ButtonMenu
               menuTitle={<AccountCircle fontSize="large" className="text-white" />}

@@ -1,14 +1,12 @@
 import { useState, useContext } from "react";
-import Cookie from "universal-cookie";
-import fightclub1 from "../img/fightClub1.jpeg";
-import gituhub1 from "../img/github_icon.png"
-import { login, register, getMyProfile } from '../DB/user';
-import { Settings } from "@material-ui/icons";
-import { ApiContext } from "../ApiContext/ApiContext";
+import { login, register, getMyProfile } from '../lib/user';
+import { useRouter } from "next/router";
+import { StateContext } from '../ApiContext/StateContext';
 
 
-const Auth = () => {
-  const { setMyProfile, setEditedMyProfile} = useContext(ApiContext);
+const Authen = () => {
+  const router = useRouter();
+  const {setMyProfile, setEditedMyProfile} = useContext(StateContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true); //defaultではログインページを表示させる
@@ -17,11 +15,17 @@ const Auth = () => {
   const authUser = async (e) => {
     e.preventDefault();
     if (isLogin) {
-      login(email, password);
+     const status = await login(email, password);
+     if(status == 201){
+      router.push("/portfolio-cards");
+     }
     } else {
       try {
-        await register(email, password)
-        await login(email, password);
+       await register(email, password)
+       const status = await login(email, password)
+       if(status == 201){
+        router.push("/portfolio-cards");
+       }
       } catch (err) {
         alert(err);
       }
@@ -30,7 +34,6 @@ const Auth = () => {
     setMyProfile(myPro)
     setEditedMyProfile(myPro)
   };
-
   return (
     <div className="max-w-md w-full space-y-8">
       <div>
@@ -39,9 +42,6 @@ const Auth = () => {
         </h2>
       </div>
 
-      {/* onSubmitでauthUser()関数が発火=>
-          ①新規登録の場合は、Djangoとの間で新規登録の処理を行い login()関数が発火=>JWTのトークンを取得=>cookieにアクセストークンをセットする 
-          ②ログインの場合は、login()関数が発火=>JWTのトークンを取得=>cookieにアクセストークンをセットする */}
       <form className="mt-8 space-y-6" onSubmit={authUser}>
         <input type="hidden" name="remember" value="true" />
         <div className="rounded-md shadow-sm -space-y-px">
@@ -51,11 +51,7 @@ const Auth = () => {
               type="email"
               autoComplete="email" //自動補完
               required
-              className="appearance-none rounded-none relative block 
-                          w-full px-3 py-2 border border-gray-300 
-                          placeholder-gray-500 text-gray-900 rounded-t-md 
-                          focus:outline-none focus:ring-indigo-500 
-                          focus:border-indigo-500 focus:z-10 sm:text-sm"
+              className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               placeholder="email"
               value={email}
               onChange={(e) => {
@@ -70,11 +66,7 @@ const Auth = () => {
               type="password"
               autoComplete="current-password"
               required
-              className="appearance-none rounded-none relative block 
-                          w-full px-3 py-2 border border-gray-300 
-                        placeholder-gray-500 text-gray-900 rounded-b-md 
-                          focus:outline-none focus:ring-indigo-500 
-                          focus:border-indigo-500 focus:z-10 sm:text-sm"
+              className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               placeholder="Password"
               value={password}
               onChange={(e) => {
@@ -86,7 +78,6 @@ const Auth = () => {
 
         <div className="flex items-center justify-center">
           <div className="text-sm">
-            {/* isLoginのBooleanを反転させることでauthUser関数の条件分岐がかわる */}
             <span
               onClick={() => setIsLogin(!isLogin)}
               className="cursor-pointer font-medium text-white hover:text-indigo-500"
@@ -99,11 +90,7 @@ const Auth = () => {
         <div>
           <button
             type="submit"
-            className="group relative w-full flex justify-center py-2 
-                        px-4 border border-transparent text-sm 
-                        font-medium rounded-md text-white bg-indigo-600 
-                        hover:bg-indigo-700 focus:outline-none focus:ring-2 
-                        focus:ring-offset-2 focus:ring-indigo-500"
+            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             <span className="absolute left-0 inset-y-0 flex items-center pl-3">
               <svg
@@ -127,4 +114,4 @@ const Auth = () => {
     </div>
   );
 };
-export default Auth;
+export default Authen;
