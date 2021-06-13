@@ -1,21 +1,8 @@
 import { useEffect, useState, useContext } from "react";
-import SimpleCard from "./MyPortfolioCard";
-import Cookie from "universal-cookie";
-import { getBlog, fetchAllBlogs, deleteBlog } from "../../lib/Blog";
-import { Grid } from "@material-ui/core";
-import { useBlogs } from "../../hooks/useBlogs";
-import { ApiContext } from "../../ApiContext/ApiContext";
-import  axios  from 'axios';
-import { getPortfolios } from '../../DB/portfolio';
 import PortfolioCards from "./PortfolioCards";
+import { getPortfolios } from '../../lib/portfolio';
 
-
-
-
-const cookie = new Cookie();
-
-export default function PortfolioList() {
-  const token = cookie.get("access_token");
+export default function PortfolioList({staticfilteredPortfolios}) {
   const [newArrivals, setNewArrivals] = useState([]);
   const [highComprehensiveEvaluation, setHighComprehensiveEvaluations] = useState([]);
   const [highCreativity, setHighCreativity] = useState([]);
@@ -25,18 +12,13 @@ export default function PortfolioList() {
   const [highBusinessOriented, setHighBusinessOriented] = useState([]);
 
   useEffect(()=>{
-    const get = async () => {
-    setNewArrivals(["aa","aa","bb","aa","aa","aa","bb","aa","aa","aa","bb","aa"])
-      // const res = await getPortfolios()
-      // setNewArrivals(res.newArrival)
-      // setHighComprehensiveEvaluations(res.highComprehensiveEvaluation)
-      // setHighCreativity(res.highCreativity)
-      // setHighSkill(res.highSkill)
-      // setHighSociality(res.highSociality)
-      // setHighUsability(res.highUsability)
-      // setHighBusinessOriented(res.highBusinessOriented)
-    }
-    get()
+    setNewArrivals(staticfilteredPortfolios.newArrival)
+    setHighComprehensiveEvaluations(staticfilteredPortfolios.highComprehensiveEvaluation)
+    setHighCreativity(staticfilteredPortfolios.highCreativity)
+    setHighSkill(staticfilteredPortfolios.highSkill)
+    setHighSociality(staticfilteredPortfolios.highSociality)
+    setHighUsability(staticfilteredPortfolios.highUsability)
+    setHighBusinessOriented(staticfilteredPortfolios.highBusinessOriented)
   },[])
 
 return (

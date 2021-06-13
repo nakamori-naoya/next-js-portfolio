@@ -27,7 +27,7 @@ export default function PortfolioCards({staticfilteredPortfolios}) {
         {newArrivals.length > 0 &&
           newArrivals.map((portfolio) => (
               <div className="ml-5 ">
-               <SimpleCard 
+                <SimpleCard 
                 id = {portfolio.id}
                 title={portfolio.name}
                 subheader={portfolio.updated_at}
@@ -35,28 +35,28 @@ export default function PortfolioCards({staticfilteredPortfolios}) {
                 // edit={() => getBlog(token, portfolio.id)}
                 // delete={() => deleteBlog(token, portfolio.id)}
                 HeadClass="w-80 whitespace-nowrap ml-5"
-               />
-             </div> 
+                />
+              </div> 
           ))}
-     </div>
+    </div>
     
-     <h2>総合評価が高いアプリ</h2>
-     <div className="w-screen flex overflow-x-scroll p-10">
+    <h2>総合評価が高いアプリ</h2>
+    <div className="w-screen flex overflow-x-scroll p-10">
         {highComprehensiveEvaluation.length > 0 &&
           highComprehensiveEvaluation.map((portfolio) => (
               <div>
-               <SimpleCard 
-                 id = {portfolio.id}
-                 title={portfolio.name}
-                 subheader={portfolio.updated_at}
+                <SimpleCard 
+                  id = {portfolio.id}
+                  title={portfolio.name}
+                  subheader={portfolio.updated_at}
                  // avatar={myProfile.image_data}
                 //  edit={() => getBlog(token, portfolio.id)}
                 //  delete={() => deleteBlog(token, portfolio.id)}
-                HeadClass="max-h-96 w-64 whitespace-nowrap ml-5 "
-               />
-               </div> 
+                  HeadClass="max-h-96 w-64 whitespace-nowrap ml-5 "
+                />
+              </div> 
           ))}
-     </div>
+    </div>
   
   
      <h2>技術力の評価が高いアプリ</h2>

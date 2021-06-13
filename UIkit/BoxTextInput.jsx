@@ -1,13 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
-
 
 const BoxTextInput = (props) => {
   return (
         <TextField
-          className={props.css}
+          color={props.color}
+          className="bg-white font-serif "
           id="filled-full-width"
           label={props.label}
           style={{ margin: 8 }}
@@ -19,6 +17,7 @@ const BoxTextInput = (props) => {
           InputLabelProps={{
             shrink: true,
           }}
+          required={props.required}
           variant="filled"
           onChange={props.onChange}
           autoComplete="off"

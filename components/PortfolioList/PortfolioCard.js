@@ -3,13 +3,7 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import Avatar from '@material-ui/core/Avatar';
-import { Grid, IconButton } from '@material-ui/core';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import fightclub2 from "../../img/fightClub2.jpeg";
-import nullAvatar from "../../img/null_avatar.jpeg";
-import SearchIcon from '@material-ui/icons/Search';
+import {IconButton } from '@material-ui/core';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
 
@@ -27,7 +21,7 @@ export default function PortfolioCard(props) {
           </Avatar>
           ):(
           <Avatar     >
-            <img src={nullAvatar} alt="P" />
+            <img src="/static/null_avatar.jpeg" alt="P" />
           </Avatar>)}
           </button>
         }
@@ -38,14 +32,14 @@ export default function PortfolioCard(props) {
           <IconButton >
             <CardMedia
               className="h-72 w-72 rounded-full my-auto"
-              image={fightclub2}
+              image="/static/fightClub2.jpeg"
             />
           </IconButton>
         </div>
         <div className="absolute top-0 right-0">
           <IconButton >
             <ThumbUpIcon 
-              color="secondary"
+              className="text-white"
               fontSize="large" />
           </IconButton>
         </div> 

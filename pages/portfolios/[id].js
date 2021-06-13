@@ -54,12 +54,12 @@ export async function getStaticProps({ params }) {
       fallback: true,
     };
   }
- 
+
 
   const twoDimArray = (array)=>{
-   return array.map(datas=>{
+    return array.map(datas=>{
         return datas.map(data=>{
-           return data.id
-         })
-       })
+          return data.id
+        })
+      })
   }

@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import Cookie from "universal-cookie";
-import { getMyProfile } from '../lib/user';
+import { getUserId } from '../lib/user';
 
 
 export const StateContext = createContext();
@@ -10,14 +10,14 @@ export default function StateContextProvider (props)  {
   const [myProfile, setMyProfile] = useState({id: "", nickName: "", image: ""}); //自分のProfile
   const [editedMyProfile, setEditedMyProfile] = useState({id: "", nickName: "", image: ""});
   const [cover, setCover] = useState();
+  const [userId, setUserId] = useState(null)
 
   useEffect(() => {
-    const getUser = async () => {
-      const res = await getMyProfile()
-      console.log("statecontextのres",res)
-      setMyProfile(res)
+    const get = async () => {
+      const res = await getUserId()
+      setUserId(res.id)
     }
-    getUser()
+    get()
 }, [token]);
 
   return (
@@ -28,6 +28,8 @@ export default function StateContextProvider (props)  {
         myProfile,
         editedMyProfile,
         cover,
+        userId,
+        setUserId,
         setCover,
         setMyProfile,
         setEditedMyProfile,

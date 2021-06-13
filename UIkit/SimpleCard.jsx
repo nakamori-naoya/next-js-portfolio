@@ -18,11 +18,11 @@ export default function SimpleCard(props) {
         avatar={
           props.avatar ? (
           <Avatar   >
-           <img src={props.avatar} alt="P" />
+            <img src={props.avatar} alt="P" />
           </Avatar>
           ):(
           <Avatar     >
-             <img src="/static/null_avatar.jpeg" alt="P" />
+            <img src="/static/null_avatar.jpeg" alt="P" />
           </Avatar>)
         }
         title={props.title}   
@@ -61,7 +61,7 @@ export default function SimpleCard(props) {
               onClick={() => props.delete()}
               />
             </IconButton>
-         </Grid>
+        </Grid>
     </Card>
   );
 }

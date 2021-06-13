@@ -8,18 +8,13 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
 
 const BootstrapInput = withStyles((theme) => ({
-  root: {
-    'label + &': {
-      marginTop: theme.spacing(3),
-    },
-  },
   input: {
     borderRadius: 4,
     position: 'relative',
     backgroundColor: theme.palette.background.paper,
     border: '1px solid #ced4da',
     fontSize: 16,
-    padding: '10px 26px 10px 12px',
+    padding: '14px 4px',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
     // Use the system font instead of the default Roboto font.
     fontFamily: [
@@ -42,34 +37,25 @@ const BootstrapInput = withStyles((theme) => ({
   },
 }))(InputBase);
 
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-}));
 
 export default function CustomizedSelects() {
-  const classes = useStyles();
   const [category, setCategory] = React.useState('');
-
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setCategory(event.target.value);
   };
 
   return (
     <div>
-      <FormControl className={classes.margin}>
-        <InputLabel htmlFor="demo-customized-select-native">カテゴリ</InputLabel>
+      <FormControl className="bg-white">
         <NativeSelect
           id="demo-customized-select-native"
-          value="カテゴリ"
+          value={category}
           onChange={handleChange}
           input={<BootstrapInput />}
         >
-          <option aria-label="None" value="" />
-          <option value={10}>Ten</option>
-          <option value={20}>Twenty</option>
-          <option value={30}>Thirty</option>
+          <option value="Category" >カテゴリ</option>
+          <option value="Portfolio" >アプリ</option>
+          <option value="User" >ユーザー</option>
         </NativeSelect>
       </FormControl>
     </div>

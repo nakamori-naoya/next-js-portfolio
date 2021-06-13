@@ -2,26 +2,17 @@ import React from "react"
 import Button from "@material-ui/core/Button"
 import {makeStyles} from "@material-ui/styles"
 
-
-const useStyles = makeStyles ({
-  "button": {
-    backgroundColor: "#003F63",
-    color: "white",
-    fontSize: 20,
-    height: 48,
-    width: 256
-  }
-})
-
 const SimpleDarkButton = React.memo((props) => {
-     const classes = useStyles();
   return (
-  <Button className={classes.button} 
-          variant="contained" 
-          onClick = {() => props.onClick()} 
-          disabled={props.disabled}
-          >
+  <Button 
+    variant="contained" 
+    onClick = {() => props.onClick()} 
+    disabled={props.disabled}
+    className="h-12 w-32 font-serif font-bold text-lg"
+  >
+    <span className={props.className}>
       {props.label} 
+    </span>
   </Button>
   )
 })

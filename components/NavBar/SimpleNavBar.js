@@ -3,13 +3,13 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import ButtonMenu from "./ButtonMenu";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import FormDialog from '../Forms/FormDialog';
+import FormDialog from '../../Forms/FormDialog';
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
-import SearchBar from './SearchBar';
-import CustomizedSelects from './CustomizedSelect';
+import ButtonMenu from '../../UIkit/ButtonMenu';
+import SearchBar from '../../UIkit/SearchBar';
+import CustomizedSelects from '../../UIkit/CustomizedSelects';
 
 
 export default function SimpleNavBar() {
@@ -32,8 +32,11 @@ export default function SimpleNavBar() {
           <HomeIcon fontSize="large" className="text-white"/>
         </IconButton>
           <FormDialog  open={open} handleOpen={handleOpen} handleClose={handleClose}/>
-          <CustomizedSelects/>
+          
+          <div className="ml-28"/>
+          <CustomizedSelects />
           <SearchBar />
+          
           <div className="ml-auto">
             <ButtonMenu
               menuTitle={<AccountCircle fontSize="large" className="text-white" />}
