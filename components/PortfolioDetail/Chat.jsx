@@ -2,9 +2,6 @@ import React from 'react';
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
-import fightclub2 from "../../img/fightClub2.jpeg";
-import nullAvatar from "../../img/null_avatar.jpeg";
-
 
 const Chat = (props) => {
     const isLoginUser = (props.user_id === 1);  //条件分岐させる。
@@ -17,11 +14,11 @@ const Chat = (props) => {
                 <ListItemAvatar>
                     {isLoginUser ? (
                     <div>
-                    <Avatar alt="icon" src={fightclub2} className="ml-3"/>
+                    <Avatar alt="icon" src="/static/fightClub2.jpeg" className="ml-3"/>
                     </div>
                     ) : (
                         <div>
-                        <Avatar alt="icon" src={nullAvatar} />
+                        <Avatar alt="icon" src="/static/fightClub1.jpeg" />
                         
                         </div>
                         

@@ -4,7 +4,7 @@ import AddPhotoALternateIcon from "@material-ui/icons/AddPhotoAlternate"
 import ImagePreview from "./ImagePreview"
 
 const ImageArea = ({images, uploadImage, deleteImage}) => {
-  console.log()
+
   return (
     <div>
       <div className="flex flex-wrap" >

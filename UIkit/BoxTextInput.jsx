@@ -18,6 +18,7 @@ const BoxTextInput = (props) => {
             shrink: true,
           }}
           required={props.required}
+          className="bg-white"
           variant="filled"
           onChange={props.onChange}
           autoComplete="off"

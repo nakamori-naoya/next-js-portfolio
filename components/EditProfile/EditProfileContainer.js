@@ -17,10 +17,9 @@ return (
     <EditProfilePresenter 
       selectedDate={selectedDate} images={images} uploadImage={uploadImage} 
       deleteImage={deleteImage} handleDateChange={handleDateChange}
-      inputNickName={inputNickName} nickName={nickName}
+      inputNickName={inputNickName} nickName={nickName} create={create}
       inputSelfIntroduction={inputSelfIntroduction} selfIntroduction={selfIntroduction}
       inputWebSite={inputWebSite} webSite={webSite} userId={userId}
-      create={create}
     />
   )
 }

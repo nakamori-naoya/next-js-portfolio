@@ -10,9 +10,9 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import DesktopMacIcon from '@material-ui/icons/DesktopMac';
 import Chats from './Chats';
 import SimpleDarkButton from '../../UIkit/SimpleDarkButton';
-import { getPortfolio, getPortfolios } from '../../DB/portfolio';
-import { createEval } from '../../DB/portfolioEval';
-import { getPortfolioAvgEval } from '../../DB/PortfolioAvgEval';
+import { getPortfolio, getPortfolios } from '../../lib/portfolio';
+import { createEval } from '../../lib/portfolioEval';
+import { getPortfolioAvgEval } from '../../lib/PortfolioAvgEval';
 import { ImageSwiper } from './ImageSwiper';
 
 
@@ -73,34 +73,34 @@ const PortfolioDetail = ({Portfolios}) => {
 
 
 
-  useEffect(()=>{
-    const get = async () => {
-      const args = {id: 1}
-      const res = await getPortfolio(args)
-      console.log("res",res)
-      setPortfolio(res.data)
-      }
-    const fetchAvgEval = async () => {
-    const res = await getPortfolioAvgEval(1)
-    }
+  // useEffect(()=>{
+  //   const get = async () => {
+  //     // const args = {id: 1}
+  //     // const res = await getPortfolio(args)
+  //     // console.log("res",res)
+  //     // setPortfolio(res.data)
+  //     }
+  //   const fetchAvgEval = async () => {
+  //   // const res = await getPortfolioAvgEval(1)
+  //   }
     
-    get()
+  //   get()
 
-    },[])
-    console.log(portfolio)
+  //   },[])
+  //   console.log(portfolio)
 
-    const avg = (array) =>{
-      return array.reduce((prev,current)=>prev + current,0) / array.length;
-  }
+  //   const avg = (array) =>{
+  //     return array.reduce((prev,current)=>prev + current,0) / array.length;
+  // }
 
-    const evaluate = async() =>{
-    const obj1 = {portfolio_id: 1 ,user_id: 1}  //ここはstateやpropsから取得するので、このあと変更！！
-    const obj2 = {skill: skill, creativity: creativity, usability: usability, sociality: sociality, business_oriented: businessOriented }
-    const array = Object.values(obj2)  //objectのvalue部分のみ取得
-    const args = {...obj1, ...obj2, comprehensive_evaluation: avg(array)}
-    const res = await createEval(args)
-    setAvgEval(res)
-  }
+  //   const evaluate = async() =>{
+  //   // const obj1 = {portfolio_id: 1 ,user_id: 1}  //ここはstateやpropsから取得するので、このあと変更！！
+  //   // const obj2 = {skill: skill, creativity: creativity, usability: usability, sociality: sociality, business_oriented: businessOriented }
+  //   // const array = Object.values(obj2)  //objectのvalue部分のみ取得
+  //   // const args = {...obj1, ...obj2, comprehensive_evaluation: avg(array)}
+  //   // const res = await createEval(args)
+  //   // setAvgEval(res)
+  // }
   
 
 
@@ -131,7 +131,7 @@ return (
                         <ThumbUpIcon className={classes.icon}/>
                       </IconButton>
                     </div>
-                      <RaderPlot  avgEval={avgEval}/>
+                      {/* <RaderPlot  avgEval={avgEval}/> */}
                     </div>
                 </Grid>
                 <Grid  item xs={4} >              
@@ -156,7 +156,7 @@ return (
             (<SimpleDarkButton
               className="h-14 w-36 hover:bg-black"
               label={"送信"}
-              onClick={()=>evaluate()}
+              // onClick={()=>evaluate()}
             />
               ):(
               <SimpleDarkButton

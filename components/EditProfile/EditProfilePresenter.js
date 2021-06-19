@@ -18,22 +18,20 @@ const EditProfilePresenter = ({
   create
 }) => {
   return (
-    <section className="pt-5 w-4/6 mx-auto">
-    <h2 className="font-serif font-semibold text-2xl text-center" >プロフィールを登録する</h2> 
-    <div className="w-2/3 mx-auto">
-    <ImageArea images={images} uploadImage={uploadImage} deleteImage={deleteImage} />
+    <section className="-mt-4 w-2/5 mx-auto">
+      <h2 className="pt-2 font-serif font-semibold text-2xl text-center" >プロフィールを登録する</h2> 
+      <ImageArea images={images} uploadImage={uploadImage} deleteImage={deleteImage} />
       <RequiredTextCounter target={nickName} limit={20} className="mr-auto" />
       <BoxTextInput
-      fullWidth={true} label="ニックネーム" multiline={false} required={true} 
-      onChange={inputNickName} rows={1} value={nickName} type={"text"} 
-      placeholder={"20文字以内で入力してください"} color="secondary"
+        fullWidth={true} label="ニックネーム" multiline={false} required={true} 
+        onChange={inputNickName} rows={1} value={nickName} type={"text"} 
+        placeholder={"20文字以内で入力してください"} color="secondary"
       />
-
       <RequiredTextCounter target={selfIntroduction} limit={400} className="mr-auto" />
       <BoxTextInput
-      fullWidth={true} label="自己紹介" multiline={true} required={true} 
-      onChange={inputSelfIntroduction} rows={4} value={selfIntroduction} type={"text"} 
-      placeholder={"400文字以内で入力してください"} color="secondary" 
+        fullWidth={true} label="自己紹介" multiline={true} required={true} 
+        onChange={inputSelfIntroduction} rows={4} value={selfIntroduction} type={"text"} 
+        placeholder={"400文字以内で入力してください"} color="secondary" 
       />
 
       <div className="flex justify-center">
@@ -58,13 +56,12 @@ const EditProfilePresenter = ({
         placeholder={""} color="primary"
       />
 
-    </div>
     <div  className="flex pt-20 justify-evenly">
-        <SimpleDarkButton
+      <SimpleDarkButton
         className="text-2xl font-serif"
         label={"登録"}
         onClick={()=>create({userId, images, nickName, selfIntroduction, webSite, selectedDate})}
-        />
+      />
     </div>   
   </section>
   )

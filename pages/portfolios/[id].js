@@ -1,8 +1,8 @@
 import { getPortfolio, getPortfolios} from "../../lib/portfolio";
-import PortfolioDetail from '../../components/PortfolioDetail';
 import { useRouter } from 'next/router';
-import SimpleNavBar from '../../UIkit/SimpleNavBar';
 import StateContextProvider from "../../ApiContext/StateContext";
+import SimpleNavBar from "../../components/NavBar/SimpleNavBar";
+import PortfolioDetail from '../../components/PortfolioDetail/PortfolioDetail';
 
 
 
@@ -15,7 +15,7 @@ export default function Portfolio({ id ,staticPortfolio }) {
     }
     return (
       <StateContextProvider>
-          <SimpleNavBar/>
+          <SimpleNavBar />
           <PortfolioDetail staticPortfolio={staticPortfolio} id={id}/>
       </StateContextProvider>
     );
@@ -37,11 +37,17 @@ export async function getStaticProps({ params }) {
 
   export async function getStaticPaths() {
     const portfolios = await getPortfolios();
-    const array = Object.values(portfolios)
-    array.shift()
-    const twoDimArrays = twoDimArray(array)
-    const idsArray = twoDimArrays.reduce((pre,current) => {pre.push(...current);return pre},[]);
+    //オブジェクトのvalueを抜き出し配列化する。今回は2次元配列になっている
+    const twoDimArray = Object.values(portfolios)  
+    const idsTwoDimArray =  extractIdsIntoTwoDimArrayFrom(twoDimArray)
+    // 2次元配列を1次元配列に変換する
+    const idsArray = idsTwoDimArray.reduce((pre,current) => {
+      pre.push(...current);
+      return pre
+    },[]);
+    //配列の重複をはじく
     const ids = idsArray.filter((x, i, self) => self.indexOf(x) === i);
+
     const paths = ids.map((id) => {
         return {
           params: {
@@ -55,8 +61,8 @@ export async function getStaticProps({ params }) {
     };
   }
 
-
-  const twoDimArray = (array)=>{
+  
+  const extractIdsIntoTwoDimArrayFrom = (array)=>{
     return array.map(datas=>{
         return datas.map(data=>{
           return data.id
