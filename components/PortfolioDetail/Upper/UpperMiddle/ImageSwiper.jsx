@@ -5,11 +5,11 @@ import "swiper/components/pagination/pagination.min.css";
 import SwiperCore, { Navigation,Pagination,Autoplay} from "swiper"
 SwiperCore.use([Navigation,Pagination,Autoplay])
 
-//npm install -S swiper@5.4.2 react-id-swiper@3.0.0  
 //         https://react-id-swiper.ashernguyen.site/doc/get-started
 //サンプル： https://react-id-swiper.ashernguyen.site/example/three-d-flip-effect
 
 export const ImageSwiper = (props) => {
+  console.log(props)
   const params = {
     autoplay: {
       delay: 2000,
@@ -24,22 +24,18 @@ export const ImageSwiper = (props) => {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-  }
-  const fightclub2 = "/static/fightClub2.jpeg"
-  const nullAvatar = "/static/null_avatar.jpeg"
+  }  
+  const images = props.images instanceof Array ? images: [props.images]
   
-  const images = [fightclub2, fightclub2, fightclub2 , nullAvatar]
   return(
-    <div className="w-11/12 h-11/12 my-auto">
     <Swiper {...params} >
       {images.length === 0 ? (
-          <img src="/static/fightClub1.jpeg" alt="画像がありません" />
-      ) : (
-        images.map(image => (
-            <img src={image} alt="アプリ画像" />
+        <img src="/static/null_avatar.jpeg" alt="N"/> 
+      ): (
+      images.map(image => (
+        <img src={image} alt="/static/null_avatar.jpeg"/>
         ))
       )}
     </Swiper>
-    </div>
   )
 }

@@ -1,6 +1,6 @@
 import { useState ,useCallback } from 'react';
 import { useRouter } from "next/router";
-import { createProfile } from '../lib/profile';
+import { createProfile } from '../../working/src/lib/profile';
 
 const useEditProfile = () => {
   const router = useRouter();
@@ -19,7 +19,7 @@ const useEditProfile = () => {
 
   const handleDateChange = useCallback((date) => {
     setSelectedDate(date);
-  })
+  },[setSelectedDate])
 
   const inputWebSite = useCallback((event) => {
     setWebSite(event.target.value)

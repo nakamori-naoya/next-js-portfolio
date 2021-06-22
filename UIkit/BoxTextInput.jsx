@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 
-const BoxTextInput = (props) => {
+const BoxTextInput = React.memo((props) => {
   return (
         <TextField
           color={props.color}
@@ -24,7 +24,7 @@ const BoxTextInput = (props) => {
           autoComplete="off"
         />
   );
-}
+})
 
 export default BoxTextInput;
 

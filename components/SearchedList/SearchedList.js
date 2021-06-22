@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import PortfolioCards from '../PortfolioList/PortfolioCards';
-import ProfileCards from '../Profile/ProfileCards';
+import ProfileCards from '../ProfileCards/ProfileCardsPresenter';
 
 const SearchedList = () => {
   //(カテゴリorポートフォリオ検索で引っかかった)ポートフォリオがくるのか
@@ -21,7 +21,7 @@ const SearchedList = () => {
       <PortfolioCards portfolios={portfolios}/>
       ):
       (
-      <></>
+      <h1 className="text-6xl text-center font-extrabold font-sans">検索結果なし</h1>
       )}
     </div>
   )

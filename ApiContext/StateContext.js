@@ -10,12 +10,12 @@ export default function StateContextProvider (props)  {
   const [myProfile, setMyProfile] = useState({id: "", nickName: "", image: ""}); //自分のProfile
   const [editedMyProfile, setEditedMyProfile] = useState({id: "", nickName: "", image: ""});
   const [cover, setCover] = useState();
-  const [userId, setUserId] = useState(null)
+  const [LoginUserId, setLoginUserId] = useState(null)
 
   useEffect(() => {
     const get = async () => {
       const res = await getUserId()
-      setUserId(res.id)
+      setLoginUserId(res.id)
     }
     get()
 }, [token]);
@@ -28,8 +28,8 @@ export default function StateContextProvider (props)  {
         myProfile,
         editedMyProfile,
         cover,
-        userId,
-        setUserId,
+        LoginUserId,
+        setLoginUserId,
         setCover,
         setMyProfile,
         setEditedMyProfile,

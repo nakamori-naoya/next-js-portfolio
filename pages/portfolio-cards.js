@@ -1,7 +1,6 @@
 import { getPortfolios } from '../lib/portfolio';
-import SimpleNavBar from '../components/NavBar/SimpleNavBar';
-import PortfolioList from '../components/PortfolioList/PortfolioListPresenter';
 import Layout from "../components/Layout";
+import PortfolioListContainer from '../components/PortfolioList/PortfolioListContainer';
 
 export async function getStaticProps() {
   const staticfilteredPortfolios = await getPortfolios(); 
@@ -12,11 +11,13 @@ export async function getStaticProps() {
 }
 
 export default function PortfolioIndex({staticfilteredPortfolios}) {
+  console.log("staticfilteredPortfolios",staticfilteredPortfolios)
   return(
-    <>
-      <SimpleNavBar />
-      <PortfolioList staticfilteredPortfolios={staticfilteredPortfolios}/>
-    </>
+      <Layout title="profile-editor">
+        <PortfolioListContainer 
+          staticfilteredPortfolios={staticfilteredPortfolios}
+        />
+      </Layout>
   )
 }
 

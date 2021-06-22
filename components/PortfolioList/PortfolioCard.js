@@ -3,20 +3,23 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import Avatar from '@material-ui/core/Avatar';
-import {IconButton } from '@material-ui/core';
+import { IconButton, Badge } from '@material-ui/core';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import Link from "next/link";
+import { useTheme } from "@material-ui/core/styles";
+
 
 
 
 export default function PortfolioCard(props) {
+  const theme = useTheme()
   return (
     <Card className="h-96 w-80 whitespace-nowrap ml-5">
       <CardHeader className="bg-gray-800 text-white border-gray-400 border-b-2 border-solid"
         avatar={
           <button >
             {props.image ? (
-            <Avatar   >
+            <Avatar >
               <img src={props.image} alt="P" />
             </Avatar>
             ):(
@@ -41,11 +44,11 @@ export default function PortfolioCard(props) {
         </div>
         <div className="absolute top-0 right-3">
           <IconButton >
-          <Badge badgeContent={1000}  max={999} color="secondary">
-            <ThumbUpIcon 
-              color="secondary"
-              fontSize="large" />
-          </Badge>
+            <Badge badgeContent={1000}  max={999} color="primary">
+              <ThumbUpIcon 
+                color="primary"
+                fontSize="large" />
+            </Badge>
           </IconButton>
         </div> 
       </div>  

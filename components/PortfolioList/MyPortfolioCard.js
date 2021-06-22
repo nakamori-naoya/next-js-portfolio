@@ -7,8 +7,6 @@ import { Grid, IconButton } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import fightclub2 from "../../img/fightClub2.jpeg";
-import nullAvatar from "../../img/null_avatar.jpeg";
 import SearchIcon from '@material-ui/icons/Search';
 
 
@@ -26,7 +24,7 @@ export default function MyPortfolioCard(props) {
           </Avatar>
           ):(
           <Avatar     >
-            <img src={nullAvatar} alt="P" />
+            <img src="/static/null_avatar.jpeg" alt="P" />
           </Avatar>)
         }
         title={props.title}   

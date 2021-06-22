@@ -1,10 +1,9 @@
 import { useEffect, useState, useContext } from "react";
 import PortfolioCards from "./PortfolioCards";
-import { getPortfolios } from '../../lib/portfolio';
 
 export default function PortfolioListPresenter({staticfilteredPortfolios}) {
   const [newArrivals, setNewArrivals] = useState([]);
-  const [highComprehensiveEvaluation, setHighComprehensiveEvaluations] = useState([]);//
+  const [highComprehensiveEvaluation, setHighComprehensiveEvaluations] = useState([]);
   const [highCreativity, setHighCreativity] = useState([]);
   const [highSkill, setHighSkill] = useState([]);
   const [highSociality, setHighSociality] = useState([]);
@@ -12,24 +11,28 @@ export default function PortfolioListPresenter({staticfilteredPortfolios}) {
   const [highBusinessOriented, setHighBusinessOriented] = useState([]);
 
   useEffect(()=>{
-    setNewArrivals(prev=> [...prev , ...staticfilteredPortfolios.newArrival])
-    setHighComprehensiveEvaluations(prev=> [...prev , ...staticfilteredPortfolios.highComprehensiveEvaluation])
-    setHighCreativity(prev=> [...prev , ...staticfilteredPortfolios.highCreativity])
-    setHighSkill(prev=> [...prev , ...staticfilteredPortfolios.highSkill])
-    setHighSociality(prev=> [...prev , ...staticfilteredPortfolios.highSociality])
-    setHighUsability(prev=> [...prev , ...staticfilteredPortfolios.highUsability])
-    setHighBusinessOriented(prev=> [...prev , ...staticfilteredPortfolios.highBusinessOriented])
+    setNewArrivals(staticfilteredPortfolios.newArrival)
+    setHighComprehensiveEvaluations(["aa","aa","bb","aa","aa","aa","bb","aa","aa","aa","bb","aa"])
+    // const res = await getPortfolios()
+      // setNewArrivals(res.newArrival)
+      // setHighComprehensiveEvaluations(res.highComprehensiveEvaluation)
+      // setHighCreativity(res.highCreativity)
+      // setHighSkill(res.highSkill)
+      // setHighSociality(res.highSociality)
+      // setHighUsability(res.highUsability)
+      // setHighBusinessOriented(res.highBusinessOriented)
   },[])
+  console.log(newArrivals)
 
 return (
-  <div className="-mt-4">
-    <PortfolioCards title="新着のアプリ" portfolios={newArrivals}/> 
-    <PortfolioCards title="総合評価が高いアプリ" portfolios={highComprehensiveEvaluation}/> 
-    <PortfolioCards title="技術力の評価が高いアプリ" portfolios={highSkill}/> 
-    <PortfolioCards title="創造性の評価が高いアプリ" portfolios={highCreativity}/> 
-    <PortfolioCards title="使用性の評価が高いアプリ" portfolios={highUsability}/> 
-    <PortfolioCards title="ビジネス性の評価が高いアプリ" portfolios={highBusinessOriented}/> 
-    <PortfolioCards title="社会性の評価が高いアプリ" portfolios={highSociality}/> 
+  <div className="-mt-4" >
+    <PortfolioCards title="新着のアプリ" portfolios={newArrivals}/>
+    {/* <PortfolioCards title="総合評価が高いアプリ" portfolios={highComprehensiveEvaluation}/>
+    <PortfolioCards title="技術力の評価が高いアプリ" portfolios={highSkill}/>
+    <PortfolioCards title="創造性の評価が高いアプリ" portfolios={highCreativity}/>
+    <PortfolioCards title="使用性の評価が高いアプリ" portfolios={highUsability}/>
+    <PortfolioCards title="ビジネス性の評価が高いアプリ" portfolios={highBusinessOriented}/>
+    <PortfolioCards title="社会性の評価が高いアプリ" portfolios={highSociality}/> */}
   </div>
   );
 }

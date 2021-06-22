@@ -1,70 +1,52 @@
 import React from 'react'
-import BoxTextInput from '../../UIkit/BoxTextInput';
 import SimpleDarkButton from '../../UIkit/SimpleDarkButton';
-import 'date-fns';
-import DateFnsUtils from '@date-io/date-fns';
-import {MuiPickersUtilsProvider,KeyboardDatePicker} from '@material-ui/pickers';
 import ImageArea from '../ImageArea/ImageArea';
-import RequiredTextCounter from '../../UIkit/RequiredTextCounter';
+import SelectDateZone from './SelectDateZone';
+import InputTextZone from './InputTextZone';
 
-
-
-const EditProfilePresenter = ({
-  images, uploadImage, deleteImage, 
+const EditProfilePresenter = React.memo(({
+  images, addImage, deleteImage, 
   selectedDate, handleDateChange,
   inputNickName, nickName,
   inputSelfIntroduction, selfIntroduction,
   inputWebSite, webSite,userId,
   create
 }) => {
+  console.log(userId)
   return (
-    <section className="-mt-4 w-2/5 mx-auto">
+    <section className="pt-4 w-2/5 mx-auto">
       <h2 className="pt-2 font-serif font-semibold text-2xl text-center" >プロフィールを登録する</h2> 
-      <ImageArea images={images} uploadImage={uploadImage} deleteImage={deleteImage} />
-      <RequiredTextCounter target={nickName} limit={20} className="mr-auto" />
-      <BoxTextInput
-        fullWidth={true} label="ニックネーム" multiline={false} required={true} 
-        onChange={inputNickName} rows={1} value={nickName} type={"text"} 
-        placeholder={"20文字以内で入力してください"} color="secondary"
+    <div >
+      <ImageArea images={images} addImage={addImage} deleteImage={deleteImage} />
+      <InputTextZone
+        {...{ inputNickName, nickName,
+          inputSelfIntroduction, selfIntroduction,
+          inputWebSite, webSite,userId,}}
       />
-      <RequiredTextCounter target={selfIntroduction} limit={400} className="mr-auto" />
-      <BoxTextInput
-        fullWidth={true} label="自己紹介" multiline={true} required={true} 
-        onChange={inputSelfIntroduction} rows={4} value={selfIntroduction} type={"text"} 
-        placeholder={"400文字以内で入力してください"} color="secondary" 
-      />
-
       <div className="flex justify-center">
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <KeyboardDatePicker
-          color="secondary" required="true"
-          disableToolbar variant="inline"
-          inputVariant="filled" className="bg-gray-100" 
-          format="MM/dd/yyyy" margin="normal"
-          id="date-picker-inline" label="プログラミングを開始した日"
-          value={selectedDate} onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-          />
-        </MuiPickersUtilsProvider>
+        <SelectDateZone
+          value={selectedDate} 
+          onChange={handleDateChange}/>
       </div>
-
-      <BoxTextInput
-        fullWidth={true} label="Webサイト" multiline={true} required={false} 
-        onChange={inputWebSite} rows={4} value={webSite} type={"text"} 
-        placeholder={""} color="primary"
-      />
-
+    </div>
     <div  className="flex pt-20 justify-evenly">
-      <SimpleDarkButton
+      {nickName && nickName.length <= 20 && images.length >= 1 && selectedDate && selfIntroduction.length <= 400 ?
+      (<SimpleDarkButton
         className="text-2xl font-serif"
         label={"登録"}
         onClick={()=>create({userId, images, nickName, selfIntroduction, webSite, selectedDate})}
-      />
+      />):
+      (<SimpleDarkButton
+        className="text-2xl font-serif"
+        label={"登録"}
+        disabled="true"
+      />)
+      }
     </div>   
   </section>
   )
-}
+})
 
 export default EditProfilePresenter
+
+

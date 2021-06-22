@@ -9,7 +9,6 @@ const useAuth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true); //defaultではログインページを表示させる
-  const {setUserId} = useContext(StateContext);
 
   const inputEmail = useCallback((event) => {
     setEmail(event.target.value)

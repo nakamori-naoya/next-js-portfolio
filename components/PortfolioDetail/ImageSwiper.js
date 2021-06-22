@@ -2,8 +2,8 @@ import React from 'react'
 import Swiper from "react-id-swiper"
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css";
-import SwiperCore, { Navigation,Pagination,Autoplay} from "swiper"
-SwiperCore.use([Navigation,Pagination,Autoplay])
+import SwiperCore, { Navigation,Pagination} from "swiper"
+SwiperCore.use([Navigation,Pagination])
 
 //npm install -S swiper@5.4.2 react-id-swiper@3.0.0  
 //         https://react-id-swiper.ashernguyen.site/doc/get-started
@@ -11,10 +11,10 @@ SwiperCore.use([Navigation,Pagination,Autoplay])
 
 export const ImageSwiper = (props) => {
   const params = {
-    autoplay: {
-      delay: 2000,
-      disableOnInteraction: false
-    },
+    // autoplay: {
+    //   delay: 2000,
+    //   disableOnInteraction: false
+    // },
     pagination: {
       el: '.swiper-pagination',
       type: 'fraction',
@@ -31,7 +31,7 @@ export const ImageSwiper = (props) => {
   const images = [fightclub2, fightclub2, fightclub2 , nullAvatar]
   return(
     <div className="w-11/12 h-11/12 my-auto">
-    {/* <Swiper {...params} >
+    <Swiper {...params} >
       {images.length === 0 ? (
           <img src="/static/fightClub1.jpeg" alt="画像がありません" />
       ) : (
@@ -39,7 +39,7 @@ export const ImageSwiper = (props) => {
             <img src={image} alt="アプリ画像" />
         ))
       )}
-    </Swiper> */}
+    </Swiper>
     </div>
   )
 }
