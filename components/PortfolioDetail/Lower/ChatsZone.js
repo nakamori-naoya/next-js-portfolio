@@ -16,14 +16,15 @@ const useStyles = makeStyles(() =>
 
 const ChatsZone = ({chats}) => {
   const classes = useStyles();
+  console.log(chats)
   return (
     <>
       <List className={classes.chats} >
           {chats.map((chat, index) => {
               return <Chat 
-                text={chat.text} key={index}  
-                ChatUserId={chat.profile.user_id} 
-                user={chat.profile}
+                text={chat.text} key={index}   
+                ChatUserId={chat.user_id} 
+                userProfile={chat.profile}
               />
           })}
       </List>

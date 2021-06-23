@@ -11,6 +11,9 @@ export default function StateContextProvider (props)  {
   const [editedMyProfile, setEditedMyProfile] = useState({id: "", nickName: "", image: ""});
   const [cover, setCover] = useState();
   const [LoginUserId, setLoginUserId] = useState(null)
+  const [loginUserProfile, setLoginUserProfile ] = useState({
+    nickName: "", image: "", userId: ""
+  })
 
   useEffect(() => {
     const get = async () => {
@@ -33,6 +36,8 @@ export default function StateContextProvider (props)  {
         setCover,
         setMyProfile,
         setEditedMyProfile,
+        loginUserProfile, 
+        setLoginUserProfile
       }}
     >
       {props.children}

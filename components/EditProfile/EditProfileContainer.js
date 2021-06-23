@@ -11,17 +11,16 @@ const EditProfileContainer = React.memo(() => {
   const {inputNickName, inputSelfIntroduction, 
           handleDateChange, inputWebSite, webSite,
           selectedDate, nickName, selfIntroduction,
-          create
         } = useEditProfile();
-  const {userId} = useContext(StateContext);
+  const {LoginUserId} = useContext(StateContext);
 
 return (
     <EditProfilePresenter 
       selectedDate={selectedDate} images={images} addImage={addImage} 
       deleteImage={deleteImage} handleDateChange={handleDateChange}
-      inputNickName={inputNickName} nickName={nickName} create={create}
+      inputNickName={inputNickName} nickName={nickName} 
       inputSelfIntroduction={inputSelfIntroduction} selfIntroduction={selfIntroduction}
-      inputWebSite={inputWebSite} webSite={webSite} userId={userId}
+      inputWebSite={inputWebSite} webSite={webSite} LoginUserId={LoginUserId}
     />
   )
 })

@@ -1,9 +1,8 @@
 import { useState ,useCallback } from 'react';
 import { useRouter } from "next/router";
-import { createProfile } from '../../working/src/lib/profile';
 
 const useEditProfile = () => {
-  const router = useRouter();
+
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [nickName, setNickName] = useState("")
   const [selfIntroduction, setSelfIntroduction] = useState("")
@@ -25,19 +24,11 @@ const useEditProfile = () => {
     setWebSite(event.target.value)
   },[setWebSite])
 
-  const create = async({userId, images, nickName, selfIntroduction, webSite, selectedDate})=>{
-    await createProfile({
-      userId, images, 
-      nickName, selfIntroduction, 
-      webSite, selectedDate
-    })
-    router.push("/portfolio-cards");
-  }
+
 
   return {inputNickName, inputSelfIntroduction, 
           handleDateChange, inputWebSite, webSite,
           selectedDate, nickName, selfIntroduction,
-          create
         }
 }
 

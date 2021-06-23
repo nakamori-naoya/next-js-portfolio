@@ -6,9 +6,9 @@ const AuthenPresenter = ({
   inputEmail, inputPassword, authUser
   }) => {
 return(
-  <div className="max-w-md w-full mt-40 space-y-8">
+  <div className="max-w-md w-full  mx-auto pt-40 h-full ">
       <div>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
+        <h2 className=" text-center text-3xl  font-extrabold text-white">
           {isLogin ? "Login" : "Sign up"}
         </h2>
       </div>
