@@ -1,9 +1,12 @@
 import React from 'react'
 import SimpleNavBarPresenter from './SimpleNavBarPresenter';
+import SearchedContextProvider from '../../ApiContext/SearchedContext';
 
 const SimpleNavBarContainer = () => {
   return (
-    <SimpleNavBarPresenter/>
+    <SearchedContextProvider >
+      <SimpleNavBarPresenter/>
+    </SearchedContextProvider>
   )
 }
 

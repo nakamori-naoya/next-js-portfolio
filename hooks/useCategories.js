@@ -11,7 +11,6 @@ const useCategories = () => {
   const [label, setLabel] = useState("name")
 
   const incrementalSearch = useCallback(async(event, select) => {
-    console.log("select",select)
     const res =  await search({keyword: event.target.value, category: select})
     setOptions([...res.data]);
   },[setOptions])

@@ -18,7 +18,7 @@ export default function StateContextProvider (props)  {
   useEffect(() => {
     const get = async () => {
       const res = await getUserId()
-      setLoginUserId(res.id)
+      setLoginUserId(res?.id)
     }
     get()
 }, [token]);

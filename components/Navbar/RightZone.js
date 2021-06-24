@@ -3,8 +3,17 @@ import ButtonMenu from '../../UIkit/ButtonMenu';
 import AccountCircle  from '@material-ui/icons/AccountCircle';
 import  IconButton  from '@material-ui/core/IconButton';
 import  ExitToAppIcon  from '@material-ui/icons/ExitToApp';
+import { useRouter } from 'next/router';
+import Cookie from "universal-cookie";
 
 const RightZone = () => {
+  const cookie = new Cookie();
+  const router = useRouter();
+  const logout = () => {
+    cookie.remove("access_token");
+    router.push("/");
+  };
+
   return (
     <>
       <ButtonMenu
@@ -12,7 +21,11 @@ const RightZone = () => {
         position="left"
       />
       <IconButton >
-        <ExitToAppIcon fontSize="large" className="text-white" />
+        <ExitToAppIcon 
+          fontSize="large" 
+          className="text-white" 
+          onClick={()=>{logout()}}
+        />
       </IconButton>
     </>
   )

@@ -4,15 +4,23 @@ import SearchBar from '../../UIkit/SearchBar';
 import  IconButton  from '@material-ui/core/IconButton';
 import  SearchIcon  from '@material-ui/icons/Search';
 import useCategories from '../../hooks/useCategories';
+import { SearchedContext } from '../../ApiContext/SearchedContext';
+import { useContext } from 'react';
+import { useRouter } from 'next/router';
+
 
 
 const SearchZone = React.memo(() => {
+  const router = useRouter();
   const {
     options, inputValue, incrementalSearch, 
-    select, handleChange, label } = useCategories()
+    select, handleChange, label ,category} = useCategories()
+    const {setSearchedResult} = useContext(SearchedContext);
 
-
-  console.log(options, select)
+  const search = () =>{
+    setSearchedResult(category)
+    router.push("/portfolio-cards");
+  }
 
   return (
     <>
@@ -30,6 +38,7 @@ const SearchZone = React.memo(() => {
         <SearchIcon 
         fontSize="large" 
         className="text-white"
+        // onClick={()=>()}
         />
       </IconButton>
     </>
