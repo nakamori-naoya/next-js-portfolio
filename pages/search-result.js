@@ -1,10 +1,15 @@
 import React from 'react'
+import SearchedContextProvider from '../ApiContext/SearchedContext'
+import SimpleNavBarContainer from '../components/Navbar/SimpleNavBarContainer';
+import SearchedListContainer from '../components/SearchedList/SearchedListContainer';
 
-const searchResult = () => {
+const searchResult = (props) => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <SimpleNavBarContainer/>
+
+        <SearchedListContainer />
+    </>
   )
 }
 

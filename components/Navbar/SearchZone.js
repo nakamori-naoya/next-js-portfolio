@@ -7,6 +7,7 @@ import useCategories from '../../hooks/useCategories';
 import { SearchedContext } from '../../ApiContext/SearchedContext';
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
+import { search } from '../../lib/search';
 
 
 
@@ -15,12 +16,14 @@ const SearchZone = React.memo(() => {
   const {
     options, inputValue, incrementalSearch, 
     select, handleChange, label ,category} = useCategories()
-    const {setSearchedResult} = useContext(SearchedContext);
+    const {searchedResult,setResult} = useContext(SearchedContext);
 
-  const search = () =>{
-    setSearchedResult(category)
-    router.push("/portfolio-cards");
+  const searching = async() =>{
+    const res = await search({keyword: category, category: select})
+    await setResult(_ => [res.data])
+    router.push("/search-result");
   }
+
 
   return (
     <>
@@ -38,7 +41,7 @@ const SearchZone = React.memo(() => {
         <SearchIcon 
         fontSize="large" 
         className="text-white"
-        // onClick={()=>()}
+        onClick={()=>searching()}
         />
       </IconButton>
     </>

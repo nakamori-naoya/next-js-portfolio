@@ -2,7 +2,6 @@ import React,{useContext} from 'react';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import {IconButton } from '@material-ui/core';
-import fightclub2 from "../../img/fightClub2.jpeg";
 import AccessibilityIcon from '@material-ui/icons/Accessibility';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ImportContactsIcon from '@material-ui/icons/ImportContacts';
@@ -26,7 +25,7 @@ export default function ProfileCard({profile}) {
           ):( */}
               <CardMedia
               className="w-48 h-48 rounded-full mx-auto"
-              image={fightclub2}
+              image="../../static/fightClub2.jpeg"
               />
           {/* )} */}
           </IconButton>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useCallback } from 'react';
-import {search} from "../lib/search"
+import { increSearch } from '../lib/search';
 
 const useCategories = () => {
   const [options, setOptions] = useState([])      //検索候補を入れる配列
@@ -11,7 +11,7 @@ const useCategories = () => {
   const [label, setLabel] = useState("name")
 
   const incrementalSearch = useCallback(async(event, select) => {
-    const res =  await search({keyword: event.target.value, category: select})
+    const res =  await increSearch({keyword: event.target.value, category: select})
     setOptions([...res.data]);
   },[setOptions])
 
