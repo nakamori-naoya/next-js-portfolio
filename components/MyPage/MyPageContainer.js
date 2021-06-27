@@ -10,8 +10,8 @@ import { getMyProfile } from '../../lib/profile';
 const MyPageContainer = () => {
   const [myPortfolios, setMyPortfolios] = useState([])
   const [myProfile, setMyProfile] = useState({})
-
   const {LoginUserId} = useContext(StateContext)
+
   useEffect(() => {
     const get = async()=>{
       const res = await getMyPortfolios(LoginUserId)
@@ -22,8 +22,6 @@ const MyPageContainer = () => {
     }
     get()
   }, [])
-
-  console.log(LoginUserId , myProfile)
 
   return (
     <>

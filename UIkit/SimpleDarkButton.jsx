@@ -8,9 +8,9 @@ const SimpleDarkButton = React.memo((props) => {
     variant="contained" 
     onClick = {() => props.onClick()} 
     disabled={props.disabled}
-    className="h-12 w-32 font-serif font-bold text-lg"
+    className="h-12 w-32 font-serif font-bold text-lg "
   >
-    <span className={props.className}>
+    <span className="w-36 text-lg align-middle" >
       {props.label} 
     </span>
   </Button>

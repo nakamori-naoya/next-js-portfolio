@@ -17,7 +17,6 @@ const PortfolioDetailContainer = React.memo(({
   const {description, github_url: githubUrl, site_url: siteUrl, 
     title, images, chats : chatsArray=[], 
     } = staticPortfolio
-    console.log("staticPortfolio.avg_eval",portfolioId, staticPortfolio.avg_eval)
   const {business_oriented: businessOriented, 
     comprehensive_evaluation: comprehensiveEvaluation,
     creativity, skill, sociality, usability

@@ -12,6 +12,7 @@ const EditPortfolioPresenter = React.memo((props) => {
   const {chipData, handleDelete,incrementalSearch,
     options, inputValue, addCategories, category} = props
   const {create} = props
+
 return (
     <div className="w-2/5  mx-auto -mt-4 pt-4">
       <ImageArea 
@@ -29,12 +30,19 @@ return (
         options, inputValue, addCategories, category}}
       />
       <div  className="flex pt-20 justify-center p-3">
+        { appName && appUrl && images && description &&githubUrl ? 
+        (
         <SimpleDarkButton
-        className="h-14 w-36 hover:bg-black" label={"登録"}
-        onClick={()=>create(
-          {images, appName, appUrl, description, githubUrl, chipData}
+          label={"登録"}
+          onClick={()=>create(
+            {images, appName, appUrl, description, githubUrl, chipData}
         )}
-        />
+        />):(
+        <SimpleDarkButton
+          label={"登録"}
+          disabled="true"
+          />)}
+
       </div> 
     </div>
   )

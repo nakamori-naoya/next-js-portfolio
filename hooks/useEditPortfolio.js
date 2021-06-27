@@ -1,8 +1,10 @@
 import React from 'react'
 import { useState, useCallback, useEffect } from 'react';
 import { createPortfolio } from '../lib/portfolio';
+import { useRouter } from 'next/router';
 
 const useEditPortfolio = () => {
+  const router = useRouter()
   const [appName, setAppName] = useState ("")
   const [appUrl, setAppUrl] = useState("")
   const [description, setDescription] = useState("")
@@ -28,8 +30,8 @@ const useEditPortfolio = () => {
 
 
   const create = async({images, appName, appUrl, description, githubUrl, chipData}) =>{
-    const data = await createPortfolio({images, appName, appUrl, description, githubUrl, chipData})
-    console.log(data)
+    const res = await createPortfolio({images, appName, appUrl, description, githubUrl, chipData})
+    router.push("/portfolio-cards")
   }
   
   return {appName, inputAppName,

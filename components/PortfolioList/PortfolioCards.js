@@ -12,7 +12,7 @@ const PortfolioCards = ({portfolios,  title}) => {
               <PortfolioCard
               id = {portfolio.id}
               title={portfolio.title}
-              image={portfolio.image}
+              images={portfolio.images}
               />
             </div> 
         ))}
