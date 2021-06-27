@@ -25,10 +25,10 @@ export default function Portfolio({ portfolioId ,staticPortfolio }) {
 
 export async function getStaticProps({ params }) {
     const res = await getPortfolio(params.id);
-    const staticPortfolio = res.data
+    const staticPortfolio = res?.data
     return {
       props: {
-        portfolioId: staticPortfolio.id,
+        portfolioId: staticPortfolio?.id,
         staticPortfolio,
       },
       revalidate: 3,
@@ -68,7 +68,7 @@ export async function getStaticProps({ params }) {
   const extractIdsIntoTwoDimArrayFrom = (array)=>{
     return array.map(datas=>{
         return datas.map(data=>{
-          return data.id
+          return data?.id
         })
       })
   }
