@@ -11,6 +11,7 @@ export default function StateContextProvider (props)  {
   const [editedMyProfile, setEditedMyProfile] = useState({id: "", nickName: "", image: ""});
   const [cover, setCover] = useState();
   const [LoginUserId, setLoginUserId] = useState(null)
+  const [searchedResult, setSearchedResult]= useState([])
   const [loginUserProfile, setLoginUserProfile ] = useState({
     nickName: "", image: "", userId: ""
   })
@@ -23,6 +24,7 @@ export default function StateContextProvider (props)  {
     get()
 }, [token]);
 
+
   return (
     <StateContext.Provider
       value={{
@@ -32,11 +34,13 @@ export default function StateContextProvider (props)  {
         editedMyProfile,
         cover,
         LoginUserId,
+        searchedResult, 
+        loginUserProfile, 
+        setSearchedResult,
         setLoginUserId,
         setCover,
         setMyProfile,
         setEditedMyProfile,
-        loginUserProfile, 
         setLoginUserProfile
       }}
     >

@@ -1,89 +1,28 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
-import FaceIcon from '@material-ui/icons/Face';
-import DoneIcon from '@material-ui/icons/Done';
+import Paper from '@material-ui/core/Paper';
+import { useTheme } from "@material-ui/core/styles";
+import { useState } from 'react';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-    '& > *': {
-      margin: theme.spacing(0.5),
-    },
-  },
-}));
 
-export default function CategoriesZone() {
-  const classes = useStyles();
 
-  const handleDelete = () => {
-    console.info('You clicked the delete icon.');
-  };
-
-  const handleClick = () => {
-    console.info('You clicked the Chip.');
-  };
-
+export default function CategoriesZone({chipData, handleDelete}) {
+  const theme = useTheme();
   return (
-    <div className={classes.root}>
-      <Chip label="Basic" variant="outlined" />
-      <Chip label="Disabled" disabled variant="outlined" />
-      <Chip
-        avatar={<Avatar>M</Avatar>}
-        label="Clickable"
-        onClick={handleClick}
-        variant="outlined"
-      />
-      <Chip
-        avatar={<Avatar alt="Natacha" src="/static/images/avatar/1.jpg" />}
-        label="Deletable"
-        onDelete={handleDelete}
-        variant="outlined"
-      />
-      <Chip
-        icon={<FaceIcon />}
-        label="Clickable deletable"
-        onClick={handleClick}
-        onDelete={handleDelete}
-        variant="outlined"
-      />
-      <Chip
-        label="Custom delete icon"
-        onClick={handleClick}
-        onDelete={handleDelete}
-        deleteIcon={<DoneIcon />}
-        variant="outlined"
-      />
-      <Chip label="Clickable link" component="a" href="#chip" clickable variant="outlined" />
-      <Chip
-        avatar={<Avatar>M</Avatar>}
-        label="Primary clickable"
-        clickable
-        color="primary"
-        onDelete={handleDelete}
-        deleteIcon={<DoneIcon />}
-        variant="outlined"
-      />
-      <Chip
-        icon={<FaceIcon />}
-        label="Primary clickable"
-        clickable
-        color="primary"
-        onDelete={handleDelete}
-        deleteIcon={<DoneIcon />}
-        variant="outlined"
-      />
-      <Chip label="Deletable primary" onDelete={handleDelete} color="primary" variant="outlined" />
-      <Chip
-        icon={<FaceIcon />}
-        label="Deletable secondary"
-        onDelete={handleDelete}
-        color="secondary"
-        variant="outlined"
-      />
-    </div>
-  );
+    <Paper component="ul" className=" flex justify-items-center  py-2 flex-wrap list-none h-36 overflow-y-scroll">
+      {chipData.map((data) => {
+        return (
+          <li key={data.key}>
+            <Chip 
+            className="mx-2 my-1"
+            label={data.name}
+            onDelete={handleDelete(data)} 
+            variant="outlined" 
+            color="primary"
+            />
+          </li>
+        )
+      })}
+    </Paper>
+  )
 }

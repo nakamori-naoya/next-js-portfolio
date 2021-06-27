@@ -29,6 +29,7 @@ const useEditProfile = () => {
   return {inputNickName, inputSelfIntroduction, 
           handleDateChange, inputWebSite, webSite,
           selectedDate, nickName, selfIntroduction,
+          setNickName,setSelfIntroduction,setSelectedDate,setWebSite
         }
 }
 

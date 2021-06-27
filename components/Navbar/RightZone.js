@@ -16,10 +16,15 @@ const RightZone = () => {
 
   return (
     <>
-      <ButtonMenu
-        menuTitle={<AccountCircle fontSize="large" className="text-white" />}
-        position="left"
-      />
+      <IconButton >
+        <AccountCircle 
+          fontSize="large" 
+          className="text-white" 
+          onClick={()=>{
+            router.push("/my-page");
+          }}
+        />
+      </IconButton>
       <IconButton >
         <ExitToAppIcon 
           fontSize="large" 

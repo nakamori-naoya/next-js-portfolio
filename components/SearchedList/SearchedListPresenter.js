@@ -1,14 +1,20 @@
 import React from 'react'
 import { useContext, useEffect } from 'react';
-import { SearchedContext } from '../../ApiContext/SearchedContext';
+import { StateContext } from '../../ApiContext/StateContext';
+import ProfileCards from '../Profile/ProfileCards';
+import PortfolioCards from '../PortfolioList/PortfolioCards';
 
-const SearchedListPresenter = () => {
-  const {searchedResult} = useContext(SearchedContext)
-  console.log("searchedResult",searchedResult)
+const SearchedListPresenter = ({searchedResult}) => {
+  const isPortfolio = searchedResult[0]?.description
 
   return (
-    <div>
-      Hello
+    <div className="pt-10">
+      <h2 className="text-center text-4xl font-serif pb-5">検索結果</h2>
+      {isPortfolio ? (
+      <PortfolioCards portfolios={searchedResult}/>
+      ):(
+      <ProfileCards  profiles={searchedResult}/>
+      )}
     </div>
   )
 }

@@ -2,8 +2,7 @@ import React from 'react'
 import ProfileCard from './ProfileCard';
 
 
-const ProfileCards = () => {
-  const profiles = ["aa", "aa","","","aa", "aa","","","aa", "aa","",""]
+const ProfileCards = ({profiles}) => {
   return (
     <div className="-mt-4 w-screen flex overflow-x-scroll pb-6">
       {profiles.length > 0 &&

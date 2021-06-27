@@ -9,7 +9,7 @@ const useCategories = () => {
   const [chipData, setChipData] = useState([])   //追加されたカテゴリが配列で入る
   const [select, setSelect] = useState("categories")
   const [label, setLabel] = useState("name")
-
+  
   const incrementalSearch = useCallback(async(event, select) => {
     const res =  await increSearch({keyword: event.target.value, category: select})
     setOptions([...res.data]);
@@ -18,6 +18,7 @@ const useCategories = () => {
   const inputValue = useCallback((value) => {
     setCategory(value)
   },[setCategory])
+
 
   const addCategories = useCallback((category = "") => {
     const S="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -41,7 +42,8 @@ const useCategories = () => {
   },[setSelect]);
 
   return {chipData, handleDelete,incrementalSearch, options, 
-          inputValue, addCategories, category, handleChange, select,label}
+          inputValue, addCategories, category, handleChange, select,label, 
+        }
 }
 
 export default useCategories

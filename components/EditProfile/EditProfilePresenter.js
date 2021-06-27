@@ -19,7 +19,7 @@ const EditProfilePresenter = React.memo(({
   const {setLoginUserProfile} = useContext(StateContext);
   const create = async({
     LoginUserId, images, nickName, selfIntroduction, webSite, selectedDate
-  })=>{
+    })=>{
     const res = await createProfile({
       LoginUserId, images, 
       nickName, selfIntroduction, 

@@ -17,17 +17,17 @@ export default function ProfileCard({profile}) {
         <div className="flex justify-center">
           <IconButton >
         {/* 画像を載せる */}
-          {/* {profile.image ? (
+          {profile.image ? (
             <CardMedia
             className="w-48 h-48 rounded-full mx-auto"
             image={profile.image}
                   />
-          ):( */}
+          ):(
               <CardMedia
               className="w-48 h-48 rounded-full mx-auto"
               image="../../static/fightClub2.jpeg"
               />
-          {/* )} */}
+          )}
           </IconButton>
         </div>
         <div className="absolute -bottom-3 right-7">
@@ -45,7 +45,7 @@ export default function ProfileCard({profile}) {
             color="secondary"
             fontSize="large"/>{" "}
         </div>
-        <div className="pl-4 my-auto truncate">ニックネーム</div>  
+        <div className="pl-4 my-auto truncate">{profile.nickname}</div>  
       </div>
 
       <div className="flex bg-gray-800 text-white">
@@ -54,7 +54,7 @@ export default function ProfileCard({profile}) {
             color="secondary"
             fontSize="large"/>{" "}
           </div>
-        <div className="my-auto pl-4 truncate">2020/12~(6ヶ月)</div>
+        <div className="my-auto pl-4 truncate">{profile.programming_start_date}</div>
       </div>
       <div className="pt-1 bg-gray-800 "/>
       <Typography 

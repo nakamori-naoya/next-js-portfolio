@@ -8,6 +8,7 @@ import { SearchedContext } from '../../ApiContext/SearchedContext';
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
 import { search } from '../../lib/search';
+import { StateContext } from '../../ApiContext/StateContext';
 
 
 
@@ -16,13 +17,8 @@ const SearchZone = React.memo(() => {
   const {
     options, inputValue, incrementalSearch, 
     select, handleChange, label ,category} = useCategories()
-    const {searchedResult,setResult} = useContext(SearchedContext);
 
-  const searching = async() =>{
-    const res = await search({keyword: category, category: select})
-    await setResult(_ => [res.data])
-    router.push("/search-result");
-  }
+
 
 
   return (
@@ -41,7 +37,11 @@ const SearchZone = React.memo(() => {
         <SearchIcon 
         fontSize="large" 
         className="text-white"
-        onClick={()=>searching()}
+        onClick={()=>{router.push({
+          pathname:"/search-result",   
+          query: {keyword: category, category: select}
+        })
+      }}
         />
       </IconButton>
     </>

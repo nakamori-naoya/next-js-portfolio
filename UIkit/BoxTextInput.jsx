@@ -8,7 +8,6 @@ const BoxTextInput = React.memo((props) => {
           className="bg-white font-serif "
           id="filled-full-width"
           label={props.label}
-          style={{ margin: 8 }}
           variant="outlined"
           value={props.value}
           placeholder={props.placeholder}
@@ -22,6 +21,7 @@ const BoxTextInput = React.memo((props) => {
           variant="filled"
           onChange={props.onChange}
           autoComplete="off"
+          multiline={props.multiline}
         />
   );
 })

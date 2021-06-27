@@ -16,7 +16,7 @@ const DisplayText = ({description}) => {
         <Typography className="font-serif text-center"  variant="h4" gutterBottom>
           アプリについて
         </Typography>
-        <Typography    variant="body1">
+        <Typography  variant="body1">
           {description}
         </Typography>
 
