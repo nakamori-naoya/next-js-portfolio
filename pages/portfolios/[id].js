@@ -23,7 +23,6 @@ export default function Portfolio({ portfolioId ,staticPortfolio }) {
     );
   }
 
-
 export async function getStaticProps({ params }) {
     const res = await axios
     .get(`http://localhost:3000/api/v1/portfolios/${params.id}`,
