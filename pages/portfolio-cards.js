@@ -14,11 +14,12 @@ import PortfolioListContainer from '../components/PortfolioList/PortfolioListCon
 //引数{staticfilteredPortfolios}
 export default function PortfolioIndex() {
   return(
-      <Layout title="profile-editor">
-        {/* <PortfolioListContainer 
-          staticfilteredPortfolios={staticfilteredPortfolios}
-        /> */}
-      </Layout>
+    <></>
+      // <Layout title="profile-editor">
+      //   <PortfolioListContainer 
+      //     staticfilteredPortfolios={staticfilteredPortfolios}
+      //   />
+      // </Layout>
   )
 }
 
