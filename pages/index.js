@@ -7,9 +7,7 @@ import StateContextProvider from "../ApiContext/StateContext";
 export default function Home() {
   return (
     <StateContextProvider>
-      <Layout title="Login">
         <AuthenContainer />
-      </Layout>
     </StateContextProvider>
   );
 }
