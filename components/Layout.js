@@ -1,10 +1,9 @@
 import SimpleNavBarContainer from './Navbar/SimpleNavBarContainer';
-export default function Layout({ children }) {
-  // console.log(children)
+export default function Layout({ children, title }) {
   return (
     <div className="min-h-screen text-white font-mono bg-gray-500">
       <header>
-        {children.type?.name !== "AuthenContainer" ?  (<SimpleNavBarContainer/>) : (<></>)}
+        {title !== "Login" ?  (<SimpleNavBarContainer/>) : (<></>)}
       </header>
       <main className="-pt-10">
         {children}
