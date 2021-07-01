@@ -24,6 +24,7 @@ export default function StateContextProvider (props)  {
     get()
 }, [token]);
 
+console.log(LoginUserId)
 
   return (
     <StateContext.Provider

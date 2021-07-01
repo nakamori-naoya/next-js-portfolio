@@ -6,14 +6,6 @@ import { useEffect } from 'react';
 
 
 export default function Home() {
-  useEffect(() => {
-  const fetcher = async()=>{
-
-    console.log(aa)
-  }
-  fetcher()
-  }, [])
-
 
   return (
     <StateContextProvider>

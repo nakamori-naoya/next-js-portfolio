@@ -4,9 +4,9 @@ import PortfolioListContainer from '../components/PortfolioList/PortfolioListCon
 import  axios from 'axios';
 
 export async function getStaticProps() {
-  const res = await fetch(
-    new URL(`http://localhost:3000/api/v1/portfolios`))
-  const staticfilteredPortfolios = await res.json() 
+  const staticfilteredPortfolios = await getPortfolios()
+
+  console.log(res,"staticfilteredPortfolios",staticfilteredPortfolios)
 
   return {
     props: {  staticfilteredPortfolios  }, 
@@ -19,9 +19,9 @@ export async function getStaticProps() {
 export default function PortfolioIndex({staticfilteredPortfolios}) {
   return(
       <Layout title="profile-editor">
-        <PortfolioListContainer 
+        {/* <PortfolioListContainer 
           staticfilteredPortfolios={staticfilteredPortfolios}
-        />
+        /> */}
       </Layout>
   )
 }
