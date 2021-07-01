@@ -6,8 +6,6 @@ import  axios from 'axios';
 export async function getStaticProps() {
   const staticfilteredPortfolios = await getPortfolios()
 
-  console.log(res,"staticfilteredPortfolios",staticfilteredPortfolios)
-
   return {
     props: {  staticfilteredPortfolios  }, 
     revalidate: 10, //ISR
