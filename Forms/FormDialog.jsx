@@ -11,12 +11,13 @@ import TextInput from './TextInput';
 
 const useStyles = makeStyles({
     iconStyle: {
-      color: "white",
-      marginRight: "20px",
-      border:"none",
-      fontSize: "22px"
+    color: "white",
+    marginRight: "20px",
+    border:"none",
+    fontSize: "22px"
     }
-  })
+})
+
 
 const FormDialog = (props) => {
     const classes = useStyles()
@@ -84,9 +85,9 @@ const FormDialog = (props) => {
 
     return (
         <>
-      <Button   className={classes.iconStyle}  onClick={props.handleOpen}>
+    <Button   className={classes.iconStyle}  onClick={props.handleOpen}>
         <h2 className="text-white font-bold text-2xl">お問い合わせ</h2>
-      </Button>
+    </Button>
         <Dialog open={props.open} onClose={props.handleClose} >
             <DialogTitle>お問い合わせフォーム</DialogTitle>
             <DialogContent className="flex  flex-col w-screen">
