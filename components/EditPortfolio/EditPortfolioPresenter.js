@@ -12,7 +12,6 @@ const EditPortfolioPresenter = React.memo((props) => {
   const {chipData, handleDelete,incrementalSearch,
     options, inputValue, addCategories, category} = props
   const {create} = props
-
 return (
     <div className="w-2/5  mx-auto -mt-4 pt-4">
       <ImageArea 

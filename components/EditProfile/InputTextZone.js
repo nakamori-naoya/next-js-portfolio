@@ -13,18 +13,18 @@ const InputTextZone = React.memo(({
       <BoxTextInput
       fullWidth={true} label="ニックネーム" multiline={false} required={true} 
       onChange={inputNickName} rows={1} value={nickName} type={"text"} 
-      placeholder={"20文字以内で入力してください"} color="secondary"
+      placeholder={"20文字以内で入力してください"} 
       />
       <RequiredTextCounter target={selfIntroduction} limit={400} className="mr-auto" />
       <BoxTextInput
       fullWidth={true} label="自己紹介" multiline={true} required={true} 
       onChange={inputSelfIntroduction} rows={4} value={selfIntroduction} type={"text"} 
-      placeholder={"400文字以内で入力してください"} color="secondary" 
+      placeholder={"400文字以内で入力してください"} 
       />
       <BoxTextInput
         fullWidth={true} label="Webサイト" multiline={true} required={false} 
         onChange={inputWebSite} rows={4} value={webSite} type={"text"} 
-        placeholder={"任意でご入力ください"} color="primary"
+        placeholder={"任意で入力してください"} 
       />
     </>
   )

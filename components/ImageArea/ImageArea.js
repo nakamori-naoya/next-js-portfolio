@@ -8,11 +8,11 @@ const ImageArea = React.memo(({images, addImage, deleteImage}) => {
     <>
       <div className="flex flex-wrap" >
         {images.length > 0 && (
-          images.map(image =><ImagePreview deleteImage={deleteImage} src={image.src} key={image.src} id={image.src}/>)
+          images.map(image =><ImagePreview deleteImage={deleteImage} src={image?.src} key={image?.src} id={image?.src}/>)
         )}
       </div>    
         <div className="text-right" >
-          <span className="font-serif text-lg ">プロフィールの画像</span>
+          <span className="font-serif text-lg">画像を選択</span>
           <IconButton className="h-14 w-14" >
             <label>
               <AddPhotoALternateIcon
