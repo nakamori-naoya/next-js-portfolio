@@ -4,8 +4,7 @@ import TextField from '@material-ui/core/TextField';
 const BoxTextInput = React.memo((props) => {
   return (
         <TextField
-          color={props.color}
-          className="bg-white font-serif "
+          className="bg-white font-serif"
           id="filled-full-width"
           label={props.label}
           variant="outlined"
@@ -17,7 +16,6 @@ const BoxTextInput = React.memo((props) => {
             shrink: true,
           }}
           required={props.required}
-          className="bg-white"
           variant="filled"
           onChange={props.onChange}
           autoComplete="off"
