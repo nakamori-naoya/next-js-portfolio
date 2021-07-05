@@ -29,7 +29,7 @@ const useAuth = () => {
     } else {
       try {
         const res =  await register(email, password)
-        const status =  await login(email, password)
+        const status = res.data.status == 201 ?  await login(email, password) : null
       if(res.data.status == 201 && status == 201){
         router.push("/profile-editor");
         }
