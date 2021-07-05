@@ -17,12 +17,21 @@ const MyPageContainer = () => {
       const res = await getMyPortfolios(LoginUserId)
       setMyPortfolios(res?.data)
       const myRes = await getMyProfile()
-      const data = {...myRes.data, ...{image: myRes?.data?.image?.replace("app_server", "naoyanakamori.com")}}
+      const data = {...myRes.data, ...{image: imageUrlConverter(myRes?.data?.image)}}
       console.log(data)
       setMyProfile(data)
     }
     get()
   }, [])
+
+  //ローカル環境と本番環境で画像のURLを変更する。imageを使う場合は必須でConverterが必要
+  const imageUrlConverter = (imageUrl) => {
+    if (imageUrl.includes("app_server")){
+      return imageUrl.replace("app_server", "naoyanakamori.com")
+    }else{
+      return imageUrl
+    }
+  }
 
   return (
     <>

@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 })
 
 
-const FormDialog = (props) => {
+const FormDialog = React.memo((props) => {
     const classes = useStyles()
     const [description, setDescription] = useState("");
     const [email, setEmail] = useState("");
@@ -116,6 +116,6 @@ const FormDialog = (props) => {
         </>
     );
 
-}
+})
 
 export default FormDialog
