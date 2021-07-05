@@ -34,7 +34,7 @@ const useAuth = () => {
         router.push("/profile-editor");
         }
       } catch (err) {
-        alert(err);
+        console.log(err);
       }
     }
   };
