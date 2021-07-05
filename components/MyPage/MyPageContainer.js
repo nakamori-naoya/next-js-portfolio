@@ -17,8 +17,9 @@ const MyPageContainer = () => {
       const res = await getMyPortfolios(LoginUserId)
       setMyPortfolios(res?.data)
       const myRes = await getMyProfile()
-      console.log(myRes)
-      setMyProfile(myRes?.data)
+      const data = {...myRes.data, ...{image: myRes?.data?.image?.replace("app_server", "naoyanakamori.com")}}
+      console.log(data)
+      setMyProfile(data)
     }
     get()
   }, [])
