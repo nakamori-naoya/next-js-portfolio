@@ -1,5 +1,22 @@
 import SimpleNavBarContainer from './Navbar/SimpleNavBarContainer';
-export default function Layout({ children, title }) {
+import Cookie from "universal-cookie";
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+const Layout = ({ children, title }) => {
+  const router = useRouter();
+  const cookie = new Cookie();
+  const token = cookie.get("access_token")
+  console.log("token",token)
+  
+
+  useEffect(() => {
+    if(!token && title !== "Login"){
+      router.push("/")
+    }
+  }, [])
+
+
   return (
     <div className="min-h-screen text-white font-mono bg-gray-500">
       <header>
@@ -14,3 +31,5 @@ export default function Layout({ children, title }) {
     </div>
   );
 }
+
+export default Layout
