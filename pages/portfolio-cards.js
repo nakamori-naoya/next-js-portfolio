@@ -17,9 +17,9 @@ export async function getStaticProps() {
 export default function PortfolioIndex({staticfilteredPortfolios}) {
   return(
       <Layout title="profile-editor">
-        {/* <PortfolioListContainer 
+        <PortfolioListContainer 
           staticfilteredPortfolios={staticfilteredPortfolios}
-        /> */}
+        />
       </Layout>
   )
 }

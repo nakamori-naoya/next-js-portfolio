@@ -17,16 +17,21 @@ const EditProfilePresenter = React.memo(({
 }) => {
   const router = useRouter();
   const {setLoginUserProfile} = useContext(StateContext);
+  
   const create = async({
     LoginUserId, images, nickName, selfIntroduction, webSite, selectedDate
     })=>{
     const res = await createProfile({
-      LoginUserId, images, 
-      nickName, selfIntroduction, 
-      webSite, selectedDate
-    })
-    setLoginUserProfile(res.data)
-    router.push("/portfolio-cards");
+        LoginUserId, images, nickName, selfIntroduction, webSite, selectedDate
+      })
+    if(res.status === 201){
+      setLoginUserProfile(res.data)
+      router.push("/portfolio-cards");
+    }else if(res.status === 404){
+      alert(res.data)
+    }else{
+      console.log(res.data)
+    }
   }
   
   return (

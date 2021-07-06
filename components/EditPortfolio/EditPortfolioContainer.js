@@ -3,6 +3,8 @@ import useImage from '../../hooks/useImage';
 import EditPortfolioPresenter from './EditPortfolioPresenter';
 import useEditPortfolio from '../../hooks/useEditPortfolio';
 import useCategories from '../../hooks/useCategories';
+import { StateContext } from '../../ApiContext/StateContext';
+import { useContext } from 'react';
 
 const EditPortfolioContainer = React.memo(() => {
   const {images, addImage, deleteImage} = useImage(false);
@@ -13,6 +15,7 @@ const EditPortfolioContainer = React.memo(() => {
 
   const {chipData, handleDelete,incrementalSearch,
           options, inputValue, addCategories, category} = useCategories()
+  const {LoginUserId} = useContext(StateContext);
   return (
     <EditPortfolioPresenter
       {...{
@@ -20,7 +23,7 @@ const EditPortfolioContainer = React.memo(() => {
         description, inputDescription, githubUrl, inputGithubUrl,
         images, addImage, deleteImage,chipData, 
         handleDelete,incrementalSearch,options, inputValue, 
-        addCategories, category
+        addCategories, category,LoginUserId
       }}
     />
   )

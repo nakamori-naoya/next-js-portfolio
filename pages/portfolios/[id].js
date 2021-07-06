@@ -24,18 +24,11 @@ export default function Portfolio({ portfolioId ,staticPortfolio }) {
   }
 
 export async function getStaticProps({ params }) {
-    const res = await axios
-    .get(`${process.env.NEXT_PUBLIC_ENDPOINT_URL}/api/v1/portfolios/${params.id}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        }
-      }
-    );
-    const staticPortfolio = res?.data?.data
+    const res = await getPortfolio(params.id)
+    const staticPortfolio = res.data
     return {
       props: {
-        portfolioId: staticPortfolio.id,
+        portfolioId: staticPortfolio?.id,
         staticPortfolio,
       },
       revalidate: 3,
@@ -44,17 +37,9 @@ export async function getStaticProps({ params }) {
 
 
   export async function getStaticPaths() {
-    const portfolios = await axios
-    .get(`http://localhost:3000/api/v1/portfolios`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        }
-      }
-    )
-
+    const portfolios = await getPortfolios()
     //オブジェクトのvalueを抜き出し配列化する。今回は2次元配列になっている
-    const twoDimArray = Object.values(portfolios?.data)  
+    const twoDimArray = Object.values(portfolios)  
     const idsTwoDimArray =  extractIdsIntoTwoDimArrayFrom(twoDimArray)
     // 2次元配列を1次元配列に変換する
     const idsArray = idsTwoDimArray.reduce((pre,current) => {
