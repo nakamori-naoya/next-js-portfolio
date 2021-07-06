@@ -16,7 +16,6 @@ const useStyles = makeStyles(() =>
 
 const ChatsZone = ({chats}) => {
   const classes = useStyles();
-  console.log(chats)
   return (
     <>
       <List className={classes.chats} >

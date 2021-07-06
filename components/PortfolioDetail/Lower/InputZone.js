@@ -30,7 +30,7 @@ const InputZone = React.memo(({setChats, portfolioId, chats}) => {
           value={chat}
       />
       <IconButton  >
-          <SendIcon onClick={()=>{create(); setChat("")}}/>
+        <SendIcon onClick={()=>{create(); setChat("")}}/>
       </IconButton>
     </>
   )

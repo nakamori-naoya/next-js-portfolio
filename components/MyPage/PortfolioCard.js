@@ -4,8 +4,11 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import {IconButton, Badge } from '@material-ui/core';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import  PostAddIcon  from '@material-ui/icons/PostAdd';
+import { useRouter } from 'next/router';
 
 export default function PortfolioCard(props) {
+  const router = useRouter()
   return (
     <Card className="h-96 w-80 whitespace-nowrap ml-5">
       <CardHeader 
@@ -41,9 +44,9 @@ export default function PortfolioCard(props) {
         </div> 
         <div className="absolute top-0 right-3">
           <IconButton >
-          <Badge badgeContent={1000}  max={999} color="secondary">
+          <Badge badgeContent={1000}  max={999}  className="text-white" >
             <ThumbUpIcon 
-              color="secondary"
+              className="text-white" 
               fontSize="large" />
           </Badge>
           </IconButton>

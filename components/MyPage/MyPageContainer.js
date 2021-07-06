@@ -12,18 +12,17 @@ const MyPageContainer = () => {
   const [myProfile, setMyProfile] = useState({})
   const {LoginUserId} = useContext(StateContext)
 
+  console.log(LoginUserId)
   useEffect(() => {
     const get = async()=>{
       const res = await getMyPortfolios(LoginUserId)
       setMyPortfolios(res?.data)
       const myRes = await getMyProfile()
       const data = {...myRes.data, ...{image: imageUrlConverter(myRes?.data?.image)}}
-      console.log(data)
       setMyProfile(data)
     }
     get()
   }, [])
-
   //ローカル環境と本番環境で画像のURLを変更する。imageを使う場合は必須でConverterが必要
   const imageUrlConverter = (imageUrl) => {
     if (imageUrl.includes("app_server")){

@@ -19,8 +19,10 @@ const Chats = React.memo(({chats, setChats, portfolioId}) => {
     <Card className="h-3/12 w-4/12" >
         <CardContent  >
             <ChatsZone {...{chats}} />
-            <div className="ml-40 inline-flex">
+            <div className="flex justify-center">
+                <div className="inline-flex">
                 <InputZone {...{setChats, portfolioId, chats}} />
+                </div>
             </div>
         </CardContent  >
     </Card >
