@@ -1,7 +1,8 @@
 import React from 'react'
 import PortfolioCard from './PortfolioCard';
 
-const PortfolioCards = ({portfolios,  title, images}) => {
+const PortfolioCards = ({portfolios,  title, deletePorrtfolio}) => {
+  console.log(portfolios)
   return (
 <>    
     <h2 className="text-2xl p-4 font-serif  text-center">{title}</h2>
@@ -13,7 +14,8 @@ const PortfolioCards = ({portfolios,  title, images}) => {
               id = {portfolio.id}
               title={portfolio.title}
               subheader={portfolio.updated_at}
-              image={portfolio?.profile?.images}
+              image={portfolio?.images}
+              deletePorrtfolio={deletePorrtfolio}
               />
             </div> 
         ))}

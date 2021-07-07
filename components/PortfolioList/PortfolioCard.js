@@ -41,7 +41,9 @@ export default function PortfolioCard(props) {
             <Badge badgeContent={1000}  max={999} className="text-white">
               <ThumbUpIcon 
                 className="text-white"
-                fontSize="large" />
+                fontSize="large" 
+                disabled="true"
+                />
             </Badge>
           </IconButton>
         </div> 

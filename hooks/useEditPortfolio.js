@@ -44,6 +44,7 @@ const useEditPortfolio = () => {
     appUrl, inputAppUrl,
     description, inputDescription,
     githubUrl, inputGithubUrl,
+    setAppName,setAppUrl, setDescription,setGithubUrl,
     create
   }
 

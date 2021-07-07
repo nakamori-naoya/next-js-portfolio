@@ -20,10 +20,14 @@ const useCategories = () => {
   },[setCategory])
 
 
-  const addCategories = useCallback((category = "") => {
-    const S="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    const random = Array.from(crypto.getRandomValues(new Uint8Array(16))).map((n)=>S[n%S.length]).join('')
-    setChipData(prev => [...prev, {name: category, key: random}])
+  const addCategories = useCallback((category) => {
+    console.log(category, "category")
+    if(category.length > 0){
+      console.log(category, "category2")
+      const S="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+      const random = Array.from(crypto.getRandomValues(new Uint8Array(16))).map((n)=>S[n%S.length]).join('')
+      setChipData(prev => [...prev, {name: category, key: random}])
+    }
   },[setChipData])
 
   const handleDelete = useCallback((chipToDelete) => () => {
