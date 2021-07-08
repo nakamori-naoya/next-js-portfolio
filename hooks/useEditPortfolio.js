@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useCallback, useEffect } from 'react';
-import { createPortfolio } from '../lib/portfolio';
+import { createPortfolio, updatePortfolio } from '../lib/portfolio';
 import { useRouter } from 'next/router';
 
 const useEditPortfolio = () => {
@@ -40,12 +40,23 @@ const useEditPortfolio = () => {
     }
   }
   
+
+  const update = async({id,images, appName, appUrl, description, githubUrl, chipData , userId}) =>{
+    const res = await updatePortfolio({id,images, appName, appUrl, description, githubUrl, chipData, userId})
+    if(res.status === 201){
+      // router.push("/portfolio-cards");
+    }else if(res.status === 404){
+      alert(res.data)
+    }else{
+      console.log(res.data)
+    }
+  }
   return {appName, inputAppName,
     appUrl, inputAppUrl,
     description, inputDescription,
     githubUrl, inputGithubUrl,
     setAppName,setAppUrl, setDescription,setGithubUrl,
-    create
+    create,update
   }
 
 }

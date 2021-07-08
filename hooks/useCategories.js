@@ -21,12 +21,21 @@ const useCategories = () => {
 
 
   const addCategories = useCallback((category) => {
-    console.log(category, "category")
     if(category.length > 0){
-      console.log(category, "category2")
+      console.log(category,"category")
       const S="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
       const random = Array.from(crypto.getRandomValues(new Uint8Array(16))).map((n)=>S[n%S.length]).join('')
       setChipData(prev => [...prev, {name: category, key: random}])
+    }
+  },[setChipData])
+
+  const receiveExistingCategories = useCallback((categories) => {
+    if(categories.length > 0){
+      categories.map(category => {
+        const S="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        const random = Array.from(crypto.getRandomValues(new Uint8Array(16))).map((n)=>S[n%S.length]).join('')
+        setChipData(prev => [...prev, {name: category, key: random}])
+      })
     }
   },[setChipData])
 
@@ -47,6 +56,7 @@ const useCategories = () => {
 
   return {chipData, handleDelete,incrementalSearch, options, 
           inputValue, addCategories, category, handleChange, select,label, 
+          receiveExistingCategories
         }
 }
 
