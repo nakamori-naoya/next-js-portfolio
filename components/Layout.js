@@ -7,7 +7,6 @@ const Layout = ({ children, title }) => {
   const router = useRouter();
   const cookie = new Cookie();
   const token = cookie.get("access_token")
-  console.log("token",token)
   
 
   useEffect(() => {

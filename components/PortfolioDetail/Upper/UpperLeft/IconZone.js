@@ -8,6 +8,7 @@ import LanguageIcon from '@material-ui/icons/Language';
 import { useRouter } from "next/router";
 const IconZone = React.memo(({siteUrl, githubUrl, profileImage, userId}) => {
   const router = useRouter();
+  console.log(userId)
   return (
     <div className="flex justify-evenly">
       <IconButton onClick={() => window.open(githubUrl, '_blank')}>
@@ -18,8 +19,19 @@ const IconZone = React.memo(({siteUrl, githubUrl, profileImage, userId}) => {
         <LanguageIcon   onClick={() => window.open(siteUrl, '_blank')} style={{ fontSize: 45 }} className="text-gray-700"/>
       </IconButton>
 
-      <IconButton  onClick={() => router.push("/profile-editor")}>
-        <Avatar  style={{ fontSize: 45 }}  src={profileImage} className="text-gray-700"/>
+      <IconButton >
+        <Avatar  
+        style={{ fontSize: 45 }}  
+        src={profileImage} 
+        className="text-gray-700"
+        onClick={() => {router.push({
+          pathname:"/profile-page",   
+          query: { 
+            userId :  userId
+          }
+        })
+      }}
+        />
       </IconButton>
 
       <IconButton >

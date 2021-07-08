@@ -22,15 +22,15 @@ const PortfolioDetailContainer = React.memo(({
     creativity, skill, sociality, usability
     } = staticPortfolio.avg_eval
 
-  const {nickname: nickName, image, 
-    user_id: userId
-    }= staticPortfolio.profile
+  const {nickname: nickName = "" , image: profileImage = "", 
+    user_id: userId = null
+    }= staticPortfolio?.profile 
   
   useEffect(()=>{
     setPortfolio(prev => (
       { ...prev, ...{
         description, githubUrl, 
-        siteUrl,title,images}
+        siteUrl,title, images: imageUrlConverter(images)}
       }))
 
     setChats(chatsArray)
@@ -42,9 +42,18 @@ const PortfolioDetailContainer = React.memo(({
       }}))
 
     setProfile(prev =>({
-      ...prev, ...{nickName, image, userId}
+      ...prev, ...{nickName, profileImage: imageUrlConverter(profileImage), userId}
       }))
   },[])
+  
+  console.log("dfkoaksd",profileImage,images, profile, portfolio)
+  const imageUrlConverter = (imageUrl) => {
+    if (imageUrl.includes("app_server")){
+      return imageUrl.replace("app_server", "naoyanakamori.com")
+    }else{
+      return imageUrl
+    }
+  }
   
 return (
   <PortfolioDetailPresenter
@@ -53,7 +62,7 @@ return (
     businessOriented, selectBusinessOriented, sociality, selectSociality, 
     creativity, selectCreativity, skill, selectSkill, portfolioId,
     enteredUsability, enteredBusinessOriented, enteredSociality, 
-    enteredCreativity, enteredSkill
+    enteredCreativity, enteredSkill, userId
     }}/>
 )
 })
