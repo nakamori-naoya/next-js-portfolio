@@ -5,12 +5,17 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { IconButton, Badge } from '@material-ui/core';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import Link from "next/link";
-import { useTheme } from "@material-ui/core/styles";
+import { useEffect, useState } from 'react';
+import { imageUrlConverter } from '../../Validator/ImageUrlConverter';
 
 
 
 
 export default function PortfolioCard(props) {
+  const [portfolioImages, setPortfolioImages] = useState("")
+  useEffect(() => {
+    setPortfolioImages(imageUrlConverter(props.images))
+  }, [props.images])
   return (
     <Card className="h-96 w-80 whitespace-nowrap ml-5">
       <CardHeader 
@@ -25,7 +30,7 @@ export default function PortfolioCard(props) {
             {props.images ? (
               <CardMedia
               className="h-72 w-72 rounded-full my-auto"
-              image={props?.images}  
+              image={portfolioImages}  
             />
             ):(
               <CardMedia

@@ -8,10 +8,16 @@ import EditIcon from '@material-ui/icons/Edit';
 import { useRouter } from 'next/router';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Link from "next/link";
+import { imageUrlConverter } from '../../Validator/ImageUrlConverter';
+import { useEffect, useState } from 'react';
 
 export default function PortfolioCard({title, id, image, deletePorrtfolio}) {
   const router = useRouter()
-  console.log(image)
+  const [portfolioImage, setPortfolioImage] = useState("")
+  useEffect(() => {
+    setPortfolioImage(imageUrlConverter(image))
+  }, [image])
+
   return (
     <Card className="h-96 w-80 whitespace-nowrap ml-5">
       <CardHeader 
@@ -25,7 +31,7 @@ export default function PortfolioCard({title, id, image, deletePorrtfolio}) {
               <Link href={`/portfolios/${id}`}>
               <CardMedia
               className="h-72 w-72 rounded-full my-auto"
-              image={image}  
+              image={portfolioImage}  
               />
               </Link>
             ):(

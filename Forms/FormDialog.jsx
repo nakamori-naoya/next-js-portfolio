@@ -5,22 +5,13 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { WEBHOOK_URL } from './WebhookConfig';
-import { makeStyles } from '@material-ui/styles';
 import TextInput from './TextInput';
 
 
-const useStyles = makeStyles({
-    iconStyle: {
-    color: "white",
-    marginRight: "20px",
-    border:"none",
-    fontSize: "22px"
-    }
-})
+
 
 
 const FormDialog = React.memo((props) => {
-    const classes = useStyles()
     const [description, setDescription] = useState("");
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
@@ -85,7 +76,7 @@ const FormDialog = React.memo((props) => {
 
     return (
         <>
-    <Button   className={classes.iconStyle}  onClick={props.handleOpen}>
+    <Button   onClick={props.handleOpen}>
         <h2 className="text-white font-bold text-2xl">お問い合わせ</h2>
     </Button>
         <Dialog open={props.open} onClose={props.handleClose} >

@@ -4,9 +4,8 @@ import { StateContext } from '../../ApiContext/StateContext';
 import ProfileCards from '../Profile/ProfileCards';
 import PortfolioCards from '../PortfolioList/PortfolioCards';
 
-const SearchedListPresenter = ({searchedResult}) => {
-  const isPortfolio = searchedResult[0]?.description
-
+const SearchedListPresenter = ({searchedResult = []}) => {
+  const isPortfolio = searchedResult[0]  ? "description" in searchedResult[0] : false 
   return (
     <div className="pt-10">
       <h2 className="text-center text-4xl font-serif pb-5">検索結果</h2>

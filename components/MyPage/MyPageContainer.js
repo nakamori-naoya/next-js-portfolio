@@ -6,6 +6,7 @@ import MyProfileCard from './MyProfileCard';
 import PortfolioCards from './PortfolioCards';
 import { StateContext } from '../../ApiContext/StateContext';
 import { getMyProfile } from '../../lib/profile';
+import { imageUrlConverter } from '../../Validator/ImageUrlConverter';
 
 
 const MyPageContainer = () => {
@@ -24,14 +25,7 @@ const MyPageContainer = () => {
     get()
   }, [LoginUserId])
 
-  //ローカル環境と本番環境で画像のURLを変更する。imageを使う場合は必須でConverterが必要
-  const imageUrlConverter = (imageUrl) => {
-    if (imageUrl.includes("app_server")){
-      return imageUrl.replace("app_server", "naoyanakamori.com")
-    }else{
-      return imageUrl
-    }
-  }
+
 
   const deletePorrtfolio = async(portfolioId) =>{
     if(window.confirm("本当に削除しますか？")){

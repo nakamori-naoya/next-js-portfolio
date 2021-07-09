@@ -4,11 +4,12 @@ import { getUserProfile } from '../../lib/profile';
 import ProfileCard from '../Profile/ProfileCard';
 import { getUserPortfolios } from '../../lib/portfolio';
 import PortfolioCards from '../PortfolioList/PortfolioCards';
+import { imageUrlConverter } from '../../Validator/ImageUrlConverter';
 
 
 const ProfilePageContainer = ({userId}) => {
   const [userPortfolios, setUserPortfolios] = useState([])
-  const [userProfile, setUserProfile] = useState({})
+  const [userProfile, setUserProfile] = useState([])
 
   useEffect(() => {
     const get = async()=>{
@@ -22,27 +23,22 @@ const ProfilePageContainer = ({userId}) => {
     get()
   }, [userId])
 
-  //ローカル環境と本番環境で画像のURLを変更する。imageを使う場合は必須でConverterが必要
-  const imageUrlConverter = (imageUrl) => {
-    if (imageUrl.includes("app_server")){
-      return imageUrl.replace("app_server", "naoyanakamori.com")
-    }else{
-      return imageUrl
-    }
-  }
 
   return (
     <>
     <div className="flex justify-center">
       <div>
       <ProfileCard
-        profile={userProfile}
-      />
+        profile={userProfile} />
       </div>
     </div>
-    <PortfolioCards
+    {userPortfolios.length > 0 ?
+    (    <PortfolioCards
       portfolios={userPortfolios ? userPortfolios : []}
-    />
+    />):(
+      <></>
+    )}
+
     </>
   )
 }

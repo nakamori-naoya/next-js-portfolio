@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react';
 import PortfolioDetailPresenter from './PortfolioDetailPresenter';
 import usePortfolioDetail from '../../hooks/usePortfolioDetail';
+import { imageUrlConverter } from '../../Validator/ImageUrlConverter';
 
 //portfolio_idをpropsとして受け取り、子コンポーネントにもpropsとして渡す
 const PortfolioDetailContainer = React.memo(({
@@ -46,14 +47,7 @@ const PortfolioDetailContainer = React.memo(({
       }))
   },[])
   
-  console.log("dfkoaksd",profileImage,images, profile, portfolio)
-  const imageUrlConverter = (imageUrl) => {
-    if (imageUrl.includes("app_server")){
-      return imageUrl.replace("app_server", "naoyanakamori.com")
-    }else{
-      return imageUrl
-    }
-  }
+
   
 return (
   <PortfolioDetailPresenter
