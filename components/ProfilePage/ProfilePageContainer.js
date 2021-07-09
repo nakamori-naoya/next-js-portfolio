@@ -38,7 +38,6 @@ const ProfilePageContainer = ({userId}) => {
     />):(
       <></>
     )}
-
     </>
   )
 }
