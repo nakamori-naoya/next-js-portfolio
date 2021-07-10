@@ -114,10 +114,12 @@ Next.js側がRailsの実装に大きく依存しており、フロントエン�
 ・チャット投稿までSSG(Static Site Generation)で実装した    
 　※今後、useSWRを使い実装することで解決予定
 
-## ER図
 
 ## インフラ図  
 <img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125167328-ecfc2600-e1da-11eb-9b46-3143d753fc16.png" >
+
+## ER図
+<img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125168431-85e17000-e1e0-11eb-96ae-dadae2bdd599.png" >
 
 
 
