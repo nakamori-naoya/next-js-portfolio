@@ -84,7 +84,7 @@ Railsの実装においては、複数のオブジェクトから利用される
 ※ドメインに固有のロジックまでサービスオブジェクトにしないように注意
 
 ## 制作手順
-1. 今回のアプリケーション作成は『[ユースケース駆動開発実践ガイド](https://www.amazon.co.jp/%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E5%AE%9F%E8%B7%B5%E3%82%AC%E3%82%A4%E3%83%89-%E3%83%80%E3%82%B0%E3%83%BB%E3%83%AD%E3%83%BC%E3%82%BC%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B0-ebook/dp/B01B5MX2TC/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=3D4MXLJ2MERIR&dchild=1&keywords=%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E5%AE%9F%E8%B7%B5%E3%82%AC%E3%82%A4%E3%83%89&qid=1625913325&sprefix=%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%2Caps%2C286&sr=8-1)』の手順に基づき設計を行いました。  
+1. 今回は『[ユースケース駆動開発実践ガイド](https://www.amazon.co.jp/%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E5%AE%9F%E8%B7%B5%E3%82%AC%E3%82%A4%E3%83%89-%E3%83%80%E3%82%B0%E3%83%BB%E3%83%AD%E3%83%BC%E3%82%BC%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B0-ebook/dp/B01B5MX2TC/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=3D4MXLJ2MERIR&dchild=1&keywords=%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E5%AE%9F%E8%B7%B5%E3%82%AC%E3%82%A4%E3%83%89&qid=1625913325&sprefix=%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%2Caps%2C286&sr=8-1)』の手順に基づき設計を行いました。  
 詳細は、[オリアプ設計](https://github.com/nakamori-naoya/rails-docker-ecs/tree/master/%E3%82%AA%E3%83%AA%E3%82%A2%E3%83%97%E8%A8%AD%E8%A8%88)のディレクトリをご覧ください。
 
 2. ある程度設計を行い、機能要件が見えてきてから、RailsのRspecにテストコードの記載を行っていきました。  
@@ -116,7 +116,8 @@ Next.js側がRailsの実装に大きく依存しており、フロントエン�
 
 ## ER図
 
-## インフラ図
+## インフラ図  
+<img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125167328-ecfc2600-e1da-11eb-9b46-3143d753fc16.png" >
 
 
 
