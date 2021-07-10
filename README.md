@@ -32,7 +32,7 @@
 The Exhibition of Portfolios ver 2.0は、フロントエンドとバックエンドをそれぞれ分離し開発を行っています。  
 両者を分離し開発を行った背景は以下の判断に基づきます。  
 ・`Railsの真の強さ`は、「`RowDataGateWay` + `ビジネスロジック` + `アプリケーションサービス(= バリデーション + コールバック)`」を実現する`Active Record`である  
-<img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125159187-d2ad5280-e1b0-11eb-82cf-c83c0e0af48b.png" > 
+<img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125168841-529fe080-e1e2-11eb-8413-f6798d57ae9d.png" > 
 
 ・一方で、Railsが実装する一枚絵のテンプレートビューはビューを複雑化させ、フロントエンドの複雑なロジックを実装するには不適合である
 
