@@ -119,7 +119,7 @@ Next.js側がRailsの実装に大きく依存しており、フロントエン�
 <img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125167328-ecfc2600-e1da-11eb-9b46-3143d753fc16.png" >
 
 ## ER図
-<img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125168431-85e17000-e1e0-11eb-96ae-dadae2bdd599.png" >
+<img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125168493-c7721b00-e1e0-11eb-8f81-0e27602131ae.png" >
 
 
 
