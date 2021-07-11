@@ -35,7 +35,7 @@ The Exhibition of Portfolios ver 2.0は、フロントエンドとバックエ�
 ・既存のサーバーサイドフレームワーク(Rails、Djangoなど)が実装する一枚絵のテンプレートビューはビューを複雑化させ、フロントエンドの複雑なロジックを実装するには不適合である  
 
 ・一方で`Railsの真の強さ`は、「`Row Data GateWay` + `ビジネスロジック` + `アプリケーションサービス(= バリデーション + コールバック)`」を実現する`Active Record`である  
-<img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125168841-529fe080-e1e2-11eb-8413-f6798d57ae9d.png" > 
+<img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125189415-ee792d00-e272-11eb-9412-03f7dc921b02.png" > 
 
 ・そうした判断に基づき、サーバーサイドJavaScriptの「Express」や「Django REST Framework」を技術選定の候補から外しました。  
 
