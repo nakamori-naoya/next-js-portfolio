@@ -42,7 +42,7 @@ The Exhibition of Portfolios ver 2.0は、フロントエンドとバックエ�
 `選定除外理由：`
 
 `Express`  
-Prismaを筆頭に、RailsのActive Recordほど効果的なO/Rマッパーを提供できていない。
+現時点では、Prismaを筆頭にRailsのActive Recordほどの効果的なO/Rマッパーを提供できていない。
 
 `Django`  
 O/Rマッパー部分は優秀だが、設定を行う場所が非常に多く初速が出せない。  
