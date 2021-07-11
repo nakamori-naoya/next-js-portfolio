@@ -30,13 +30,26 @@
 
 ## 技術選定の理由1 「フロントとバックエンドの分離」
 The Exhibition of Portfolios ver 2.0は、フロントエンドとバックエンドをそれぞれ分離し開発を行っています。  
-両者を分離し開発を行った背景は以下の判断に基づきます。  
-・`Railsの真の強さ`は、「`RowDataGateWay` + `ビジネスロジック` + `アプリケーションサービス(= バリデーション + コールバック)`」を実現する`Active Record`である  
+両者を分離し開発を行った背景は以下の判断に基づきます。 
+
+・既存のサーバーサイドフレームワーク(Rails、Djangoなど)が実装する一枚絵のテンプレートビューはビューを複雑化させ、フロントエンドの複雑なロジックを実装するには不適合である  
+
+・一方で`Railsの真の強さ`は、「`Row Data GateWay` + `ビジネスロジック` + `アプリケーションサービス(= バリデーション + コールバック)`」を実現する`Active Record`である  
 <img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125168841-529fe080-e1e2-11eb-8413-f6798d57ae9d.png" > 
 
-・一方で、Railsが実装する一枚絵のテンプレートビューはビューを複雑化させ、フロントエンドの複雑なロジックを実装するには不適合である
+・そうした判断に基づき、サーバーサイドJavaScriptの「Express」や「Django REST Framework」を技術選定の候補から外しました。  
 
-そうした判断に基づき、Railsの役割を`モデルとビジネスロジックを組み立てるコントローラーに集中`させる一方で、ビューの実装をReact.jsとそのフレームワークのNext.jsに担わせることにしました。
+`選定除外理由：`
+
+`Express`  
+Prismaを筆頭に、RailsのActive Recordほど効果的なO/Rマッパーを提供できていない。
+
+`Django`  
+O/Rマッパー部分は優秀だが、設定を行う場所が非常に多く初速が出せない。  
+データをシリアライズするために、モデルの実装の度に一枚Layerが多くなり開発速度が出せない。
+
+
+以上の理由から、Railsの役割を`モデルとビジネスロジックを組み立てるコントローラーに集中`させる一方で、Railsの弱点であるビューの実装を`React.jsとそのフレームワークのNext.js`に担わせることにしました。
 
 ## 技術選定の理由2 「Docker、CircleCI、ECSの導入」
 上記技術の導入理由は下記の通り
@@ -68,7 +81,7 @@ The Exhibition of Portfolios ver 2.0は、フロントエンドとバックエ�
 
 ## 技術的なこだわり1 「再利用可能なコンポーネント作成」
 1. Reactの実装においては、ロジックの再利用を可能にするために、`「Custom Hook」` を使用しました。
-2. また、見た目だけに責務に持つ`「Presentational Component」` とデータや振る舞いを他のコンポーネントに受け渡す`「 Container Component」`に分割しロジックの組み上げを行いました。
+2. また、見た目に関して責務に持つ`「Presentational Component」` とデータや振る舞いを他のコンポーネントに受け渡す`「 Container Component」`に分割しロジックの組み上げを行いました。
 <img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125151886-5ef55080-e184-11eb-9d0e-9371f809836d.png" >
 
 3. さらに、「見た目に関するロジック = `レイアウト(配置)に関するロジック` + `各コンポーネントのデザインに関するロジック`」であると考え、レイアウトが複雑化する場合は、レイアウト用のコンポーネントを別途用意することにしました。   
@@ -81,7 +94,11 @@ The Exhibition of Portfolios ver 2.0は、フロントエンドとバックエ�
 Railsの実装においては、複数のオブジェクトから利用される`「特定のドメインモデルに紐づかない」ロジック`かつ`データベースでの永続化を目的としないロジック`は`サービスオブジェクト`として実装しました。
 今回は、[検索機能](https://github.com/nakamori-naoya/rails-docker-ecs/blob/master/backend/app/services/search_service.rb)をサービスオブジェクトとして実装しました。
 <img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125159719-0b026000-e1b4-11eb-960a-2b747742a862.png" >
-※ドメインに固有のロジックまでサービスオブジェクトにしないように注意
+※ドメインに固有のロジックまでサービスオブジェクトにしないように注意  
+
+### 私の考えるサービスオブジェクト使用パターン
+<img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125189179-bcb39680-e271-11eb-8d9c-e64e1bf97cd4.png" >
+
 
 ## 制作手順
 1. 今回は『[ユースケース駆動開発実践ガイド](https://www.amazon.co.jp/%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E5%AE%9F%E8%B7%B5%E3%82%AC%E3%82%A4%E3%83%89-%E3%83%80%E3%82%B0%E3%83%BB%E3%83%AD%E3%83%BC%E3%82%BC%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B0-ebook/dp/B01B5MX2TC/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=3D4MXLJ2MERIR&dchild=1&keywords=%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E5%AE%9F%E8%B7%B5%E3%82%AC%E3%82%A4%E3%83%89&qid=1625913325&sprefix=%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%2Caps%2C286&sr=8-1)』の手順に基づき設計を行いました。  
@@ -121,7 +138,7 @@ Next.js側がRailsの実装に大きく依存しており、フロントエン�
 <img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125167328-ecfc2600-e1da-11eb-9b46-3143d753fc16.png" >
 
 ## ER図
-<img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125168493-c7721b00-e1e0-11eb-8f81-0e27602131ae.png" >
+<img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125188894-83c6f200-e270-11eb-9bae-ccb3d552a2d9.png" >
 
 
 
