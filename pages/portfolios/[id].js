@@ -4,19 +4,34 @@ import StateContextProvider from "../../ApiContext/StateContext";
 import SimpleNavBarContainer from '../../components/Navbar/SimpleNavBarContainer';
 import PortfolioDetailContainer from '../../components/PortfolioDetail/PortfolioDetailContainer';
 import axios from 'axios';
+import useSWR from "swr";
+import { useEffect } from 'react';
 
 
-
+const fetcher = url => axios.get(url).then(res => res.data.data)
 export default function Portfolio({ portfolioId ,staticPortfolio }) {
+  
     const router = useRouter();
-    if (router.isFallback) {
+    const { data: portfolio, mutate } = useSWR(
+      `${process.env.NEXT_PUBLIC_ENDPOINT_URL}/api/v1/portfolios/${portfolioId}`,
+      fetcher,
+      {
+        initialData: staticPortfolio,
+      }
+    );
+    console.log(portfolio)
+    useEffect(() => {
+      mutate();
+    }, []);
+    
+    if (router.isFallback || !staticPortfolio) {
       return <div className="mx-auto text-6xl">Loading...</div>;
     }
     return (
       <StateContextProvider>
         <SimpleNavBarContainer />
         <PortfolioDetailContainer 
-        staticPortfolio={staticPortfolio} 
+        staticPortfolio={portfolio} 
         portfolioId={portfolioId}
         />
       </StateContextProvider>
@@ -31,7 +46,7 @@ export async function getStaticProps({ params }) {
         portfolioId: staticPortfolio?.id,
         staticPortfolio,
       },
-      revalidate: 3,
+      revalidate: 1,
     };
   }
 
@@ -45,7 +60,7 @@ export async function getStaticProps({ params }) {
     const idsArray = idsTwoDimArray.reduce((pre,current) => {
       pre.push(...current);
       return pre
-    },[]);
+      },[]);
 
     //配列の重複をはじく
     const ids = idsArray.filter((x, i, self) => self.indexOf(x) === i);
@@ -59,7 +74,7 @@ export async function getStaticProps({ params }) {
       })
     return {
       paths,
-      fallback: false,
+      fallback: true,
     };
   }
 

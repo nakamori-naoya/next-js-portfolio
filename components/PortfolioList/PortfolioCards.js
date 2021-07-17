@@ -2,7 +2,6 @@ import React from 'react'
 import PortfolioCard from './PortfolioCard';
 
 const PortfolioCards = ({portfolios,  title}) => {
-  console.log(portfolios)
   return (
 <>    
     <h2 className="text-2xl p-4 font-serif  text-center">{title}</h2>
