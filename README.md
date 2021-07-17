@@ -1,4 +1,4 @@
-# The Exhibition of Portfolios ver 2.0
+# The Exhibition of Portfolios ver 2.0(技術解説編)
 
 ## :octocat:使用技術
 <p align="center">
