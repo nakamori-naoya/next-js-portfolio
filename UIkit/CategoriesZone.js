@@ -18,7 +18,7 @@ export default function CategoriesZone({chipData, handleDelete}) {
             label={data.name}
             onDelete={handleDelete(data)} 
             variant="outlined" 
-            color="primary"
+            color="secondary"
             />
           </li>
         )
