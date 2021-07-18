@@ -142,19 +142,16 @@ Next.js側がRailsの実装に大きく依存しており、フロントエン�
 
 
 ## インフラ図  
-<img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125167328-ecfc2600-e1da-11eb-9b46-3143d753fc16.png" >
+<img   alt="スクリーンショット 2020-11-14 12 45 52" src="<img width="1041" alt="スクリーンショット 2021-07-17 23 48 55" src="https://user-images.githubusercontent.com/73022482/126040692-2f7ddb72-f3e5-4c6c-a030-52ee7ad160a9.png">
+" >
 
 ## ER図
-<img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125188894-83c6f200-e270-11eb-9bae-ccb3d552a2d9.png" >
+<img   alt="スクリーンショット 2020-11-14 12 45 52" src="https://user-images.githubusercontent.com/73022482/125188894-83c6f200-e270-11eb-9bae-ccb3d552a2d9.png" >  
 
 
 
-
-
-
-
-
-
+## 参照
+アプリの概要については、[こちら](https://github.com/nakamori-naoya/rails-docker-ecs)に記載しています。
 
 
 
