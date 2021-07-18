@@ -1,5 +1,11 @@
 # The Exhibition of Portfolios ver 2.0(技術解説編)
 
+## 🌐 URL   
+
+## テスト用アカウント
+メールアドレス：test@gmail.com      
+パスワード：test2021
+
 ## :octocat:使用技術
 <p align="center">
   <a href="https://ja.reactjs.org/">

@@ -22,7 +22,6 @@ const EditPortfolio = () => {
     }
     portfolioId ? get() : null
   }, [portfolioId])
-  console.log("portfolio",portfolio)
 
   return (
     <Layout>

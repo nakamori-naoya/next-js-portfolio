@@ -44,7 +44,7 @@ const useEditPortfolio = () => {
   const update = async({id,images, appName, appUrl, description, githubUrl, chipData , userId}) =>{
     const res = await updatePortfolio({id,images, appName, appUrl, description, githubUrl, chipData, userId})
     if(res.status === 201){
-      // router.push("/portfolio-cards");
+      router.push("/portfolio-cards");
     }else if(res.status === 404){
       alert(res.data)
     }else{

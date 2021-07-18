@@ -39,7 +39,7 @@ return (
         />):(
         <SimpleDarkButton
           label={"登録"}
-          disabled="true"
+          disabled="true" 
           />)}
       </div> 
     </div>
