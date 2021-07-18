@@ -32,13 +32,13 @@ const useEditPortfolio = () => {
   const create = async({images, appName, appUrl, description, githubUrl, chipData , userId}) =>{
     const res = await createPortfolio({images, appName, appUrl, description, githubUrl, chipData, userId})
     console.log(res)
-    // if(res.status === 201){
-    //   router.push("/portfolio-cards");
-    // }else if(res.status === 404){
-    //   alert(res.data)
-    // }else{
-    //   console.log(res.data)
-    // }
+    if(res.status === 201){
+      router.push("/portfolio-cards");
+    }else if(res.status === 404){
+      alert(res.data)
+    }else{
+      console.log(res.data)
+    }
   }
   
 
