@@ -1,6 +1,7 @@
 # The Exhibition of Portfolios ver 2.0(技術解説編)
 
 ## 🌐 URL   
+https://next-js-portfolio10.vercel.app/  
 
 ## テスト用アカウント
 メールアドレス：test@gmail.com      
