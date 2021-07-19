@@ -4,12 +4,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { WEBHOOK_URL } from './WebhookConfig';
 import TextInput from './TextInput';
-
-
-
-
 
 const FormDialog = React.memo((props) => {
     const [description, setDescription] = useState("");
@@ -61,7 +56,7 @@ const FormDialog = React.memo((props) => {
                     + '【問い合わせ内容】\n' + description
             };
 
-            fetch(WEBHOOK_URL, {
+            fetch(process.env.WEBHOOK_URL, {
                 method: 'POST',
                 body: JSON.stringify(payload)
             }).then(() => {
