@@ -20,7 +20,7 @@ export default function PortfolioListPresenter({staticfilteredPortfolios}) {
     setHighUsability(staticfilteredPortfolios.highUsability)
     setHighBusinessOriented(staticfilteredPortfolios.highBusinessOriented)
   },[])
-
+console.log(highComprehensiveEvaluation,highSkill)
 return (
   <div className="-mt-4" >
     <PortfolioCards title="新着のアプリ" portfolios={newArrivals}/>

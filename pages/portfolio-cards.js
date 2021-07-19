@@ -5,16 +5,16 @@ import  axios from 'axios';
 
 export async function getStaticProps() {
   const staticfilteredPortfolios = await getPortfolios()
-
   return {
     props: {  staticfilteredPortfolios  }, 
-    revalidate: 10, //ISR
+    revalidate: 1, //ISR
   };
 }
 
 
 //{staticfilteredPortfolios}
 export default function PortfolioIndex({staticfilteredPortfolios}) {
+  console.log(staticfilteredPortfolios,1)
   return(
       <Layout title="profile-editor">
         <PortfolioListContainer 
